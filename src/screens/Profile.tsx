@@ -31,7 +31,7 @@ export function Profile() {
               />
             :
               <UserPhoto 
-                source={{ uri: 'https://github.com/rodrigorgtic.png' }}
+                source={{ uri: 'https://github.com/thomaslunnar.png' }}
                 alt="Foto do usuário"
                 size={PHOTO_SIZE}
               />

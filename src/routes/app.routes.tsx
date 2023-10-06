@@ -31,8 +31,8 @@ export function AppRoutes() {
   return (
     <Navigator screenOptions={{ 
       headerShown: false,
-      tabBarShowLabel: false,
-      tabBarActiveTintColor: colors.green[500],
+      tabBarShowLabel: true,
+      tabBarActiveTintColor: colors.blue[500],
       tabBarInactiveTintColor: colors.gray[200],
       tabBarStyle: {
         backgroundColor: colors.gray[600],
@@ -52,7 +52,7 @@ export function AppRoutes() {
         }}
       />
 
-      <Screen 
+      {/* <Screen 
         name='history'
         component={History}
         options={{
@@ -60,7 +60,7 @@ export function AppRoutes() {
             <HistorySvg fill={color} width={iconSize} height={iconSize} />
           )
         }}
-      />
+      /> */}
 
       <Screen 
         name='profile'
