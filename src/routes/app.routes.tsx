@@ -4,16 +4,16 @@ import { createBottomTabNavigator, BottomTabNavigationProp } from '@react-naviga
 
 import HomeSvg from '@assets/home.svg';
 import HistorySvg from '@assets/history.svg';
-import ProfileSvg from '@assets/profile.svg';
+import AccountSvg from '@assets/account.svg';
 
 import { Home } from '@screens/Home';
-import { Exercise } from '@screens/Exercise';
+import { Treinamento } from '@screens/Treinamento';
 import { History } from '@screens/History';
-import { Profile } from '@screens/Profile';
+import { Account } from '@screens/Account';
 
 type AppRoutes = {
   home: undefined;
-  exercise: undefined;
+  Treinamento: undefined;
   profile: undefined;
   history: undefined;
 }
@@ -63,18 +63,18 @@ export function AppRoutes() {
       /> */}
 
       <Screen 
-        name='profile'
-        component={Profile}
+        name='Account'
+        component={Account}
         options={{
           tabBarIcon: ({ color }) => (
-            <ProfileSvg fill={color} width={iconSize} height={iconSize} />
+            <AccountSvg fill={color} width={iconSize} height={iconSize} />
           )
         }}
       />
 
       <Screen 
-        name='exercise'
-        component={Exercise}
+        name='Treinamento'
+        component={Treinamento}
         options={{ tabBarButton: () => null }}
       />
     </Navigator>

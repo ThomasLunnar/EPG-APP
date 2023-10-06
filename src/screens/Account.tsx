@@ -10,13 +10,13 @@ import { Button } from '@components/Button';
 
 const PHOTO_SIZE = 33;
 
-export function Profile() {
+export function Account() {
 
   const [photoIsLoading, setPhotoIsLoading] = useState(false);
 
   return (
     <VStack flex={1}>
-      <ScreenHeader title='Perfil' />
+      <ScreenHeader title='Conta' />
 
       <ScrollView contentContainerStyle={{ paddingBottom: 36 }}>
         <Center mt={6} px={10}>

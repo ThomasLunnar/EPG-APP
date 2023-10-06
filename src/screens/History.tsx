@@ -5,7 +5,7 @@ import { HistoryCard } from '@components/HistoryCard';
 import { ScreenHeader } from '@components/ScreenHeader';
 
 export function History() {
-  const [exercises, setExercises] = useState([
+  const [Treinamentos, setTreinamentos] = useState([
     {
       title: '26.08.22',
       data: ["Puxada frontal", "Remada unilateral"]
@@ -21,7 +21,7 @@ export function History() {
       <ScreenHeader title='Histórico' />
 
       <SectionList 
-        sections={exercises}
+        sections={Treinamentos}
         keyExtractor={item => item}
         renderItem={({ item }) => (
           <HistoryCard />
@@ -32,7 +32,7 @@ export function History() {
           </Heading>
         )}
         px={8}
-        contentContainerStyle={exercises.length === 0 && { flex: 1, justifyContent: 'center' }}
+        contentContainerStyle={Treinamentos.length === 0 && { flex: 1, justifyContent: 'center' }}
         ListEmptyComponent={() => (
           <Text color="gray.100" textAlign="center">
             Não há exercícios registrados ainda. {'\n'}
