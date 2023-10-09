@@ -2,14 +2,21 @@ import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { FlatList, Heading, HStack, Text, VStack, ScrollView } from 'native-base';
 
+//componentes
 import { Group } from '@components/Group';
 import { HomeHeader } from '@components/HomeHeader';
 import { TreinamentoCard } from '@components/TreinamentoCard';
+
+//rotas
 import { AppNavigatorRoutesProps } from '@routes/app.routes';
+
+//momentaneo
+import { UserPhoto } from '@components/UserPhoto';
+import { TouchableOpacity } from 'react-native';
 
 export function Home() {
 
-  const [perfil, setPerfis] = useState(['perfil 1','perfil 2','perfil 3']);
+  const [Perfis, setPerfis] = useState(['https://github.com/ThomasLunnar.png','https://github.com/felipeoteh.png','https://github.com/Bruno-Nuness.png', 'https://github.com/VictorLunnar.png']);
   const [Treinamentos, setTreinamentos] = useState(['Trilha de Consultoria', 'Trilha de Consultori', 'Trilha de Consultora', 'Trilha de Consultore']);
 
   const navigation = useNavigation<AppNavigatorRoutesProps>();
@@ -42,6 +49,29 @@ export function Home() {
           minH={10}
         /> */}
 
+<FlatList 
+            data={Perfis}
+            background='blue.700'
+            keyExtractor={item => item}
+            renderItem={({ item }) => (
+              <TouchableOpacity onPress={handleOpenTreinamentoDetails}>
+                <UserPhoto 
+                  size={16} 
+                  alt='cade a foto'
+                  source={{ uri: item }} />
+              </TouchableOpacity>
+            )}
+            alwaysBounceHorizontal
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            horizontal
+            px={8}
+            pr={4}
+            _contentContainerStyle={{
+              paddingRight: 8
+            }}
+          />
+
         <VStack px={8}>
           <HStack justifyContent="space-between" my={5}>
             <Heading color="gray.200" fontSize="xl" fontWeight={400}>
@@ -56,7 +86,7 @@ export function Home() {
 
           <FlatList 
             data={Treinamentos}
-            background='gray.500'
+            background='blue.700'
             keyExtractor={item => item}
             renderItem={({ item }) => (
               <TreinamentoCard onPress={handleOpenTreinamentoDetails} />
@@ -84,17 +114,23 @@ export function Home() {
         </VStack>
 
           <FlatList 
-            data={Treinamentos}
-            background='gray.500'
+            data={Perfis}
+            background='blue.700'
             keyExtractor={item => item}
             renderItem={({ item }) => (
-              <TreinamentoCard onPress={handleOpenTreinamentoDetails} />
+              <TouchableOpacity onPress={handleOpenTreinamentoDetails}>
+                <UserPhoto 
+                  size={32} 
+                  alt='cade o thomas'
+                  source={{ uri: item }} />
+              </TouchableOpacity>
             )}
             alwaysBounceHorizontal
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
             horizontal
             px={8}
+            pr={4}
             _contentContainerStyle={{
               paddingRight: 8
             }}
