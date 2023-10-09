@@ -9,9 +9,8 @@ import { AppNavigatorRoutesProps } from '@routes/app.routes';
 
 export function Home() {
 
-  const [groups, setGroups] = useState(['Costas', 'Bíceps', 'Tríceps', 'ombro']);
-  const [Treinamentos, setTreinamentos] = useState(['Trilha de Consultoria', 'Trilha de Consultori', 'Trilha de Consultora', 'Trilha de Consultora']);
-  const [groupSelected, setGroupSelected] = useState('Costas');
+  const [perfil, setPerfis] = useState(['perfil 1','perfil 2','perfil 3']);
+  const [Treinamentos, setTreinamentos] = useState(['Trilha de Consultoria', 'Trilha de Consultori', 'Trilha de Consultora', 'Trilha de Consultore']);
 
   const navigation = useNavigation<AppNavigatorRoutesProps>();
 
@@ -44,7 +43,7 @@ export function Home() {
         /> */}
 
         <VStack px={8}>
-          <HStack justifyContent="space-between" mb={5}>
+          <HStack justifyContent="space-between" my={5}>
             <Heading color="gray.200" fontSize="xl" fontWeight={400}>
               Trilha <Text fontWeight={600}>Estratégica</Text>
             </Heading>
@@ -57,12 +56,43 @@ export function Home() {
 
           <FlatList 
             data={Treinamentos}
+            background='gray.500'
             keyExtractor={item => item}
             renderItem={({ item }) => (
               <TreinamentoCard onPress={handleOpenTreinamentoDetails} />
             )}
             alwaysBounceHorizontal
             showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            horizontal
+            px={8}
+            _contentContainerStyle={{
+              paddingRight: 8
+            }}
+          />
+
+        <VStack px={8}>
+          <HStack justifyContent="space-between" my={5}>
+            <Heading color="gray.200" fontSize="xl" fontWeight={400}>
+              Meu <Text fontWeight={600}>Time</Text>
+            </Heading>
+
+            <Text color="gray.200" fontSize="sm">
+              {Treinamentos.length}
+            </Text>
+          </HStack>
+        </VStack>
+
+          <FlatList 
+            data={Treinamentos}
+            background='gray.500'
+            keyExtractor={item => item}
+            renderItem={({ item }) => (
+              <TreinamentoCard onPress={handleOpenTreinamentoDetails} />
+            )}
+            alwaysBounceHorizontal
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
             horizontal
             px={8}
             _contentContainerStyle={{

@@ -52,6 +52,8 @@ export function AppRoutes() {
         }}
       />
 
+      {/* Rota para histórico, não está sendo utilizado na aplicação */}
+
       {/* <Screen 
         name='history'
         component={History}

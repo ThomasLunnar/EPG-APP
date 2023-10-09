@@ -2,11 +2,13 @@ import { TouchableOpacity } from 'react-native';
 import { Heading, HStack, Text, VStack, Icon } from 'native-base';
 import { MaterialIcons } from '@expo/vector-icons';
 
+import LogoSvg from '@assets/logo-coroa.svg';
+
 import { UserPhoto } from './UserPhoto';
 
 export function HomeHeader() {
   return (
-    <HStack bg="gray.600" pt={16} pb={5} px={8} alignItems="center">
+    <HStack bg="blue.700" pt={12}  px={8} alignItems="center">
       <UserPhoto 
         source={{ uri: 'https://github.com/thomaslunnar.png' }}
         size={16}
@@ -26,11 +28,8 @@ export function HomeHeader() {
 
 
       <TouchableOpacity>
-        <Icon 
-          as={MaterialIcons}
-          name="logout"
-          color="gray.200"
-          size={7}
+        <LogoSvg 
+          width={75}
         />
       </TouchableOpacity>
     </HStack>

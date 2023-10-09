@@ -3,8 +3,7 @@ import { VStack, Image, Text, Center, Heading, ScrollView } from "native-base";
 
 import { AuthNavigatorRoutesProps } from '@routes/auth.routes';
 
-import LogoSvg from '@assets/logo.svg';
-import BackgroundImg from '@assets/background.png';
+import LogoSvg from '@assets/logo-coroa.svg';
 
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
@@ -20,13 +19,13 @@ export function SignIn() {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
         <VStack flex={1} px={10} pb={16}>
-        <Image 
+        {/* <Image 
           source={BackgroundImg}
           defaultSource={BackgroundImg}
           alt="Pessoas treinando"
           resizeMode="contain"
           position="absolute"
-        />
+        /> */}
 
         <Center my={24}>
           <LogoSvg />
