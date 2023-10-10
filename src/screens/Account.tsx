@@ -38,18 +38,18 @@ export function Account() {
           }
           
           <TouchableOpacity>
-            <Text color="green.500" fontWeight="bold" fontSize="md" mt={2} mb={8}>
+            <Text color="blue.500" fontWeight="bold" fontSize="md" mt={2} mb={8}>
               Alterar Foto
             </Text>
           </TouchableOpacity>
 
           <Input 
-            bg="gray.600" 
+            bg="blue.800" 
             placeholder='Nome' 
           />
 
           <Input 
-            bg="gray.600" 
+            bg="blue.800" 
             placeholder="E-mail"
             isDisabled
           />
@@ -59,19 +59,19 @@ export function Account() {
           </Heading>
 
           <Input 
-            bg="gray.600"
+            bg="blue.800"
             placeholder="Senha antiga"
             secureTextEntry
           />
 
           <Input 
-            bg="gray.600"
+            bg="blue.800"
             placeholder="Nova senha"
             secureTextEntry
           />
 
           <Input 
-            bg="gray.600"
+            bg="blue.800"
             placeholder="Confirme a nova senha"
             secureTextEntry
           />
