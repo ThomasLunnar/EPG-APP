@@ -16,13 +16,16 @@ import { TouchableOpacity } from 'react-native';
 
 export function Home() {
 
-  const [Perfis, setPerfis] = useState(['https://github.com/ThomasLunnar.png','https://github.com/felipeoteh.png','https://github.com/Bruno-Nuness.png', 'https://github.com/VictorLunnar.png']);
+  const [Perfis, setPerfis] = useState(['https://github.com/ThomasLunnar.png', 'https://github.com/felipeoteh.png', 'https://github.com/Bruno-Nuness.png', 'https://github.com/VictorLunnar.png']);
   const [Treinamentos, setTreinamentos] = useState(['Trilha de Consultoria', 'Trilha de Consultori', 'Trilha de Consultora', 'Trilha de Consultore']);
 
   const navigation = useNavigation<AppNavigatorRoutesProps>();
 
   function handleOpenTreinamentoDetails() {
-    navigation.navigate('Treinamento');
+    navigation.navigate('treinamento');
+  }
+  function handleOpenPerfilDetails() {
+    navigation.navigate('perfil');
   }
 
   return (
@@ -49,28 +52,29 @@ export function Home() {
           minH={10}
         /> */}
 
-<FlatList 
-            data={Perfis}
-            background='blue.700'
-            keyExtractor={item => item}
-            renderItem={({ item }) => (
-              <TouchableOpacity onPress={handleOpenTreinamentoDetails}>
-                <UserPhoto 
-                  size={16} 
-                  alt='cade a foto'
-                  source={{ uri: item }} />
-              </TouchableOpacity>
-            )}
-            alwaysBounceHorizontal
-            showsVerticalScrollIndicator={false}
-            showsHorizontalScrollIndicator={false}
-            horizontal
-            px={8}
-            pr={4}
-            _contentContainerStyle={{
-              paddingRight: 8
-            }}
-          />
+        <FlatList
+          data={Perfis}
+          background='blue.700'
+          keyExtractor={item => item}
+          renderItem={({ item }) => (
+            <TouchableOpacity>
+              <UserPhoto
+                size={16}
+                mr={2}
+                alt='cade a foto'
+                source={{ uri: item }} />
+            </TouchableOpacity>
+          )}
+          alwaysBounceHorizontal
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+          horizontal
+          px={8}
+          pr={4}
+          _contentContainerStyle={{
+            paddingRight: 8
+          }}
+        />
 
         <VStack px={8}>
           <HStack justifyContent="space-between" my={5}>
@@ -84,22 +88,22 @@ export function Home() {
           </HStack>
         </VStack>
 
-          <FlatList 
-            data={Treinamentos}
-            background='blue.700'
-            keyExtractor={item => item}
-            renderItem={({ item }) => (
-              <TreinamentoCard onPress={handleOpenTreinamentoDetails} />
-            )}
-            alwaysBounceHorizontal
-            showsVerticalScrollIndicator={false}
-            showsHorizontalScrollIndicator={false}
-            horizontal
-            px={8}
-            _contentContainerStyle={{
-              paddingRight: 8
-            }}
-          />
+        <FlatList
+          data={Treinamentos}
+          background='blue.700'
+          keyExtractor={item => item}
+          renderItem={({ item }) => (
+            <TreinamentoCard onPress={handleOpenTreinamentoDetails} />
+          )}
+          alwaysBounceHorizontal
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+          horizontal
+          px={8}
+          _contentContainerStyle={{
+            paddingRight: 8
+          }}
+        />
 
         <VStack px={8}>
           <HStack justifyContent="space-between" my={5}>
@@ -113,30 +117,30 @@ export function Home() {
           </HStack>
         </VStack>
 
-          <FlatList 
-            data={Perfis}
-            background='blue.700'
-            keyExtractor={item => item}
-            renderItem={({ item }) => (
-              <TouchableOpacity onPress={handleOpenTreinamentoDetails}>
-                <UserPhoto 
-                  size={32} 
-                  alt='cade o thomas'
-                  source={{ uri: item }} />
-              </TouchableOpacity>
-            )}
-            alwaysBounceHorizontal
-            showsVerticalScrollIndicator={false}
-            showsHorizontalScrollIndicator={false}
-            horizontal
-            px={8}
-            pr={4}
-            _contentContainerStyle={{
-              paddingRight: 8
-            }}
-          />
+        <FlatList
+          data={Perfis}
+          background='blue.700'
+          keyExtractor={item => item}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={handleOpenPerfilDetails}>
+              <UserPhoto
+                size={32}
+                alt='cade a foto'
+                mr={2}
+                source={{ uri: item }} />
+            </TouchableOpacity>
+          )}
+          alwaysBounceHorizontal
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+          horizontal
+          px={8}
+          _contentContainerStyle={{
+            paddingRight: 8
+          }}
+        />
 
-        
+
       </VStack>
     </ScrollView>
   );

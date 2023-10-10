@@ -10,12 +10,14 @@ import { Home } from '@screens/Home';
 import { Treinamento } from '@screens/Treinamento';
 import { History } from '@screens/History';
 import { Account } from '@screens/Account';
+import { Perfil } from '@screens/Perfil';
 
 type AppRoutes = {
   home: undefined;
-  Treinamento: undefined;
-  profile: undefined;
+  treinamento: undefined;
+  account: undefined;
   history: undefined;
+  perfil: undefined;
 }
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>;
@@ -35,11 +37,11 @@ export function AppRoutes() {
       tabBarActiveTintColor: colors.blue[500],
       tabBarInactiveTintColor: colors.gray[200],
       tabBarStyle: {
-        backgroundColor: colors.gray[600],
+        backgroundColor: colors.blue[800],
         borderTopWidth: 0,
         height: Platform.OS === "android" ? 'auto' : 96,
-        paddingBottom: sizes[10],
-        paddingTop: sizes[6]
+        paddingBottom: sizes[8],
+        paddingTop: sizes[8]
       }
     }}>
       <Screen 
@@ -65,7 +67,7 @@ export function AppRoutes() {
       /> */}
 
       <Screen 
-        name='Account'
+        name='account'
         component={Account}
         options={{
           tabBarIcon: ({ color }) => (
@@ -75,8 +77,14 @@ export function AppRoutes() {
       />
 
       <Screen 
-        name='Treinamento'
+        name='treinamento'
         component={Treinamento}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen 
+        name="perfil"
+        component={Perfil}
         options={{ tabBarButton: () => null }}
       />
     </Navigator>
