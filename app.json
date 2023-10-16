@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ignite-rn-03-ignite-gym",
-    "slug": "ignite-rn-03-ignite-gym",
+    "name": "EPG",
+    "slug": "EPG",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,11 +23,17 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "backgroundColor": "#161C2F"
+      },
+      "package": "com.thomaslunnar.EPG"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "49aa1bd4-3635-4655-91a5-76aebca8dcf8"
+      }
     }
   }
 }
