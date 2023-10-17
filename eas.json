@@ -5,12 +5,13 @@
   "build": {
     "preview": {
       "android": {
-        "distribution":"internal"
+        "distribution": "internal"
+      },
+      "ios": {
+        "simulator": true
       }
 
     },
-    "production":{
-      
-    }
+    "production": {}
   }
 }
