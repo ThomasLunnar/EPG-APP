@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    brunches:
+      - main
+
+jobs:
+  CI:
+    name: Continuous Integration
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: action/checkout@v3
+
+      - name: Setup Node
+        uses: action/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: install dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm test
+        
+
+    
