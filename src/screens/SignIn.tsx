@@ -30,13 +30,13 @@ export function SignIn() {
         <Center my={24}>
           <LogoSvg />
 
-          <Text color="gray.100" fontSize="sm">
+          <Text color="white" fontSize="sm">
             Treine sua mente e o seu corpo.
           </Text>
         </Center>
 
         <Center>
-          <Heading color="gray.100" fontSize="xl" mb={6} fontFamily="heading">
+          <Heading color="white" fontSize="xl" mb={6} fontFamily="heading">
             Acesse a conta
           </Heading>
 
@@ -55,7 +55,7 @@ export function SignIn() {
         </Center>
 
         <Center mt={24}>
-          <Text color="gray.100" fontSize="sm" mb={3} fontFamily="body">
+          <Text color="white" fontSize="sm" mb={3} fontFamily="body">
             Ainda não tem acesso?
           </Text>
 

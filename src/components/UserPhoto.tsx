@@ -11,7 +11,7 @@ export function UserPhoto({ size, ...rest }: Props) {
       h={size} 
       rounded="full" 
       borderWidth={2}
-      borderColor="gray.400"
+      borderColor="blue.500"
       {...rest} 
     />
   );

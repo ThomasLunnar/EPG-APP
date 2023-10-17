@@ -29,13 +29,13 @@ export function SignUp() {
         <Center my={24}>
           <LogoSvg />
 
-          <Text color="gray.100" fontSize="sm">
+          <Text color="white" fontSize="sm">
             Treine sua mente e o seu corpo.
           </Text>
         </Center>
 
         <Center>
-          <Heading color="gray.100" fontSize="xl" mb={6} fontFamily="heading">
+          <Heading color="white" fontSize="xl" mb={6} fontFamily="heading">
             Crie sua conta
           </Heading>
 

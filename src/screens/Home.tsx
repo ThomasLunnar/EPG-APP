@@ -78,11 +78,11 @@ export function Home() {
 
         <VStack px={8}>
           <HStack justifyContent="space-between" my={5}>
-            <Heading color="gray.200" fontSize="xl" fontWeight={400}>
-              Trilha <Text fontWeight={600}>Estratégica</Text>
+            <Heading color="white" fontSize="xl" fontWeight={600}>
+              Trilha <Text fontWeight={800}>Estratégica</Text>
             </Heading>
 
-            <Text color="gray.200" fontSize="sm">
+            <Text color="white" fontSize="sm">
               {Treinamentos.length}
             </Text>
           </HStack>
@@ -107,11 +107,11 @@ export function Home() {
 
         <VStack px={8}>
           <HStack justifyContent="space-between" my={5}>
-            <Heading color="gray.200" fontSize="xl" fontWeight={400}>
-              Meu <Text fontWeight={600}>Time</Text>
+            <Heading color="white" fontSize="xl" fontWeight={400}>
+              Meu <Text fontWeight={800}>Time</Text>
             </Heading>
 
-            <Text color="gray.200" fontSize="sm">
+            <Text color="white" fontSize="sm">
               {Treinamentos.length}
             </Text>
           </HStack>
