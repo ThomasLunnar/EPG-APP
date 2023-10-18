@@ -7,13 +7,15 @@ import { AppRoutes } from "./app.routes";
 export function Routes() {
   const { colors } = useTheme();
 
+  let UserLogin = false
+
   const theme = DefaultTheme;
   theme.colors.background = colors.blue[700];
 
   return (
     <Box flex={1} bg="gray.700">
       <NavigationContainer theme={theme}>
-        < AppRoutes />
+        {UserLogin ? < AppRoutes /> : < AuthRoutes />}
       </NavigationContainer>
     </Box>
   );

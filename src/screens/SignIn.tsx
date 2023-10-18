@@ -15,6 +15,9 @@ export function SignIn() {
   function handleNewAccount() {
     navigation.navigate('signUp');
   }
+  function handleGuestAccount() {
+    navigation.navigate('guestSignIn');
+  }
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
@@ -59,6 +62,12 @@ export function SignIn() {
             Ainda não tem acesso?
           </Text>
 
+          <Button 
+            title="Entrar como Convidado" 
+            variant="outline"
+            onPress={handleGuestAccount}
+            mb={2}
+          />
           <Button 
             title="Criar Conta" 
             variant="outline"
