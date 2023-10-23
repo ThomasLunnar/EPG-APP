@@ -15,9 +15,10 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 
     const [user, setUser] = useState({
         id: '1',
-        name: 'Thomas',
+        name: 'Convidado',
         email: 'thomas@lunnar.team',
-        avatar: 'https://github.com/ThomasLunnar.png'
+        avatar: 'https://github.com/ThomasLunnar.png',
+        convidado: false
     })
 
     return (
