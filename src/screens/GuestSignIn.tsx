@@ -7,30 +7,51 @@ import { Input } from "@components/Input";
 import { Button } from "@components/Button";
 import { useState } from 'react'
 
+import { useAuth } from '@hooks/useAuth'
+
 import { Controller, useForm } from 'react-hook-form'
 
-type FormDataProps = {
-  GuestPassword: string;
-}
+// type FormDataProps = {
+//   GuestPassword: string;
+// }
 
 export function GuestSignIn() {
 
+  const { setUser } = useAuth();
+
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
-  const { control, handleSubmit } = useForm<FormDataProps>();
+  // const { control, handleSubmit } = useForm<FormDataProps>();
+
+  const [guestPassword, setGuestPassword] = useState();
 
   function handleGoBack() {
     navigation.goBack();
   }
 
-  function handleGuestSignIn({GuestPassword}: FormDataProps) {
-    console.log({GuestPassword})
-    // console.log(guestPassword)
-    // if (guestPassword == 'lunnar23') {
-    //   console.log(true)
-    // } else {
-    //   console.log(false)
-    // }
+  // function handleGuestSignIn({GuestPassword}: FormDataProps) {
+  //   console.log({GuestPassword})
+  //   console.log(guestPassword)
+  //   if (guestPassword == 'lunnar23') {
+  //     console.log(true)
+  //   } else {
+  //     console.log(false)
+  //   }
+  // }
+
+  function handleGuestSignIn() {
+    console.log(guestPassword)
+    if (guestPassword == 'lunnar23') {
+      console.log(true)
+      setUser({
+        convidado:true
+      })
+    } else {
+      console.log(false)
+      setUser({
+        convidado:false
+      })
+    }
   }
 
   return (
@@ -49,7 +70,7 @@ export function GuestSignIn() {
             Digite a<Text fontFamily="heading"> palavra-chave</Text> divulgada na Imersão <Text fontFamily="heading">Empresário Governante</Text>.
           </Heading>
 
-          <Controller
+          {/* <Controller
             control={control}
             name='GuestPassword'
             rules= {{
@@ -65,11 +86,19 @@ export function GuestSignIn() {
                 returnKeyType="send"
               />
             )}  
+          /> */}
+
+          <Input
+            placeholder="Palavra-chave"
+            secureTextEntry
+            onChangeText={setGuestPassword}
+            onSubmitEditing={handleGuestSignIn}
+            returnKeyType="send"
           />
 
           <Button
             title="Acessar"
-            onPress= {handleSubmit(handleGuestSignIn)}
+            onPress={handleGuestSignIn}
           />
         </Center>
 
