@@ -7,12 +7,21 @@ import { UserPhoto } from '@components/UserPhoto';
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
 
+import { useAuth } from '@hooks/useAuth'
 
 const PHOTO_SIZE = 33;
 
 export function Account() {
 
   const [photoIsLoading, setPhotoIsLoading] = useState(false);
+
+  const { setUser } = useAuth();
+
+  function logOut(){
+    setUser({
+      convidado:false
+    })
+  }
 
   return (
     <VStack flex={1}>
@@ -77,6 +86,12 @@ export function Account() {
           />
 
           <Button title="Atualizar" mt={4} />
+
+          <TouchableOpacity onPress={logOut}>
+            <Text color="red.500" fontWeight="medium" fontSize="md" mt={16} mb={2}>
+              Sair
+            </Text>
+          </TouchableOpacity>
         </Center>
       </ScrollView>
     </VStack>
