@@ -91,6 +91,7 @@ export function GuestSignIn() {
           <Input
             placeholder="Palavra-chave"
             secureTextEntry
+            autoCapitalize='none'
             onChangeText={setGuestPassword}
             onSubmitEditing={handleGuestSignIn}
             returnKeyType="send"

@@ -3,6 +3,7 @@ import { Heading, HStack, Text, VStack, Icon } from 'native-base';
 import { MaterialIcons } from '@expo/vector-icons';
 
 import LogoSvg from '@assets/logo-coroa.svg';
+import AccountImg from '@assets/userPhotoDefault.png';
 
 import { UserPhoto } from './UserPhoto';
 
@@ -10,7 +11,7 @@ export function HomeHeader() {
   return (
     <HStack bg="blue.700" pt={12}  px={8} alignItems="center">
       <UserPhoto 
-        source={{ uri: 'https://github.com/thomaslunnar.png' }}
+        source={AccountImg}
         size={16}
         alt="Imagem do usuário"
         mr={4}
@@ -22,7 +23,7 @@ export function HomeHeader() {
         </Text>
 
         <Heading color="gray.100" fontSize="md">
-          Thomas
+          Convidado
         </Heading>
       </VStack>
 

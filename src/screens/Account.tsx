@@ -7,6 +7,8 @@ import { UserPhoto } from '@components/UserPhoto';
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
 
+import userPhotoDefault from '@assets/userPhotoDefault.png'
+
 import { useAuth } from '@hooks/useAuth'
 
 const PHOTO_SIZE = 33;
@@ -40,7 +42,7 @@ export function Account() {
               />
             :
               <UserPhoto 
-                source={{ uri: 'https://github.com/thomaslunnar.png' }}
+                source={userPhotoDefault}
                 alt="Foto do usuário"
                 size={PHOTO_SIZE}
               />
@@ -53,12 +55,11 @@ export function Account() {
           </TouchableOpacity>
 
           <Input 
-            bg="blue.800" 
-            placeholder='Nome' 
+            placeholder='Nome'
+            isDisabled
           />
 
           <Input 
-            bg="blue.800" 
             placeholder="E-mail"
             isDisabled
           />
@@ -68,21 +69,21 @@ export function Account() {
           </Heading>
 
           <Input 
-            bg="blue.800"
             placeholder="Senha antiga"
             secureTextEntry
+            isDisabled
           />
 
           <Input 
-            bg="blue.800"
             placeholder="Nova senha"
             secureTextEntry
+            isDisabled
           />
 
           <Input 
-            bg="blue.800"
             placeholder="Confirme a nova senha"
             secureTextEntry
+            isDisabled
           />
 
           <Button title="Atualizar" mt={4} />
