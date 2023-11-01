@@ -18,7 +18,7 @@ type FormDataProps = {
 }
 
 const GuestSignInSchema = yup.object({
-  GuestPassword: yup.string().required('Informe a senha agora')
+  GuestPassword: yup.string().required('Informe a senha agora').oneOf(['lunnar23'],'senha incorreta')
   
 })
 
@@ -49,6 +49,7 @@ export function GuestSignIn() {
       console.log(false)
     }
   }
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
       <VStack flex={1} px={10} pb={16}>
