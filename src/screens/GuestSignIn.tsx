@@ -6,14 +6,21 @@ import { AuthNavigatorRoutesProps } from '@routes/auth.routes';
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
 import { useState } from 'react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup';
 
 import { useAuth } from '@hooks/useAuth'
 
 import { Controller, useForm } from 'react-hook-form'
 
-// type FormDataProps = {
-//   GuestPassword: string;
-// }
+type FormDataProps = {
+  GuestPassword: string;
+}
+
+const GuestSignInSchema = yup.object({
+  GuestPassword: yup.string().required('Informe a senha agora')
+  
+})
 
 export function GuestSignIn() {
 
@@ -21,39 +28,27 @@ export function GuestSignIn() {
 
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
-  // const { control, handleSubmit } = useForm<FormDataProps>();
+  const { control, handleSubmit, formState: {errors} } = useForm<FormDataProps>({
+    resolver: yupResolver(GuestSignInSchema)
+  });
 
-  const [guestPassword, setGuestPassword] = useState();
+  // const [guestPassword, setGuestPassword] = useState();
 
   function handleGoBack() {
     navigation.goBack();
   }
 
-  // function handleGuestSignIn({GuestPassword}: FormDataProps) {
-  //   console.log({GuestPassword})
-  //   console.log(guestPassword)
-  //   if (guestPassword == 'lunnar23') {
-  //     console.log(true)
-  //   } else {
-  //     console.log(false)
-  //   }
-  // }
-
-  function handleGuestSignIn() {
+  function handleGuestSignIn(guestPassword: any) {
     console.log(guestPassword)
-    if (guestPassword == 'lunnar23') {
+    if (guestPassword.GuestPassword == "lunnar23") {
       console.log(true)
       setUser({
         convidado:true
       })
     } else {
       console.log(false)
-      setUser({
-        convidado:false
-      })
     }
   }
-
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
       <VStack flex={1} px={10} pb={16}>
@@ -70,36 +65,35 @@ export function GuestSignIn() {
             Digite a<Text fontFamily="heading"> palavra-chave</Text> divulgada na Imersão <Text fontFamily="heading">Empresário Governante</Text>.
           </Heading>
 
-          {/* <Controller
+          <Controller
             control={control}
             name='GuestPassword'
-            rules= {{
-              required:'Senha Incorreta ou Expirada'
-            }}
             render={({field: { onChange, value } }) => (
               <Input
                 placeholder="Palavra-chave"
                 secureTextEntry
+                autoCapitalize='none'
                 onChangeText={onChange}
                 value={value}
                 onSubmitEditing={handleSubmit(handleGuestSignIn)}
                 returnKeyType="send"
+                errorMessage={errors.GuestPassword?.message}
               />
             )}  
-          /> */}
+          />
 
-          <Input
+          {/* <Input
             placeholder="Palavra-chave"
             secureTextEntry
             autoCapitalize='none'
             onChangeText={setGuestPassword}
             onSubmitEditing={handleGuestSignIn}
             returnKeyType="send"
-          />
+          /> */}
 
           <Button
             title="Acessar"
-            onPress={handleGuestSignIn}
+            onPress={handleSubmit(handleGuestSignIn)}
           />
         </Center>
 
