@@ -8,11 +8,7 @@ export function History() {
   const [Treinamentos, setTreinamentos] = useState([
     {
       title: '26.08.22',
-      data: ["Puxada frontal", "Remada unilateral"]
-    },
-    {
-      title: '27.08.22',
-      data: ["Puxada frontal"]
+      data: ["", ""]
     }
   ]);
 
@@ -35,8 +31,7 @@ export function History() {
         contentContainerStyle={Treinamentos.length === 0 && { flex: 1, justifyContent: 'center' }}
         ListEmptyComponent={() => (
           <Text color="gray.100" textAlign="center">
-            Não há exercícios registrados ainda. {'\n'}
-            Vamos fazer exercícios hoje?
+            
           </Text>
         )}
         showsVerticalScrollIndicator={false}

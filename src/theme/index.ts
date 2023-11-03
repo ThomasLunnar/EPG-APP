@@ -27,7 +27,7 @@ export const THEME = extendTheme({
     }
   },
   fonts: {
-    heading: 'Montserrat_700Bold',
+    heading: 'Montserrat_600SemiBold',
     body: 'Montserrat_400Regular',
   },
   fontSizes: {
