@@ -12,7 +12,7 @@ const PHOTO_SIZE = 32;
 export function Perfil() {
 
     const [photoIsLoading, setPhotoIsLoading] = useState(false);
-    const [etapas, setEtapas] = useState(['1', '2', '3', '4', '5']);
+    const [etapas, setEtapas] = useState(['1', '2', '3', '4', '5','6','7','8','9','10','11','12']);
 
     const tarefasPDI = [
         { text: 'Tarefa 1', id: 1 },
