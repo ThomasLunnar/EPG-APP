@@ -33,9 +33,7 @@ export function SignIn() {
         <Center my={24}>
           <LogoSvg />
 
-          <Text color="white" fontSize="sm">
-            Treine sua mente e o seu corpo.
-          </Text>
+          
         </Center>
 
         <Center>
@@ -43,7 +41,7 @@ export function SignIn() {
             Acesse a conta
           </Heading>
 
-          <Input 
+          {/* <Input 
             placeholder="E-mail" 
             keyboardType="email-address"
             autoCapitalize="none"
@@ -52,9 +50,9 @@ export function SignIn() {
           <Input 
             placeholder="Senha" 
             secureTextEntry
-          />
+          /> */}
 
-          <Button title="Acessar" />
+          <Button title="Entrar com Conta Google" />
         </Center>
 
         <Center mt={24}>
