@@ -25,6 +25,7 @@
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:scheme="EPG"/>
         <data android:scheme="com.thomaslunnar.EPG"/>
       </intent-filter>
     </activity>
