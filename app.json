@@ -19,19 +19,18 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
       "googleServicesFile": "./GoogleService-Info.plist",
+      "supportsTablet": true,
       "bundleIdentifier": "com.thomaslunnar.EPG"
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
-        "googleServicesFile": "./google-services.json",
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#161C2F"
       },
       "package": "com.thomaslunnar.EPG"
     },
-    "plugins": ["@react-native-google-signin/google-signin"],
     "web": {
       "favicon": "./assets/favicon.png"
     },
@@ -39,6 +38,7 @@
       "eas": {
         "projectId": "49aa1bd4-3635-4655-91a5-76aebca8dcf8"
       }
-    }
+    },
+    "plugins": ["@react-native-google-signin/google-signin"]
   }
 }

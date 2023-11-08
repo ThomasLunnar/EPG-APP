@@ -12,6 +12,7 @@ import LogoSvg from '@assets/logo-coroa.svg';
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
 import { ANDROID_CLIENT_ID, IOS_CLIENT_ID } from '@env';
+import NewAuth from '@components/NewAuth';
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -90,6 +91,8 @@ export function SignIn() {
             onPress={handleGoogleSignIn}
             isLoading={isAuthenticating}
           />
+
+          <NewAuth/>
         </Center>
 
         <Center mt={24}>
