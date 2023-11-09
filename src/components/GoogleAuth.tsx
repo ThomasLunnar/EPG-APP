@@ -4,6 +4,7 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import { WEB_CLIENT_ID } from '@env';
+import { View, Text } from 'native-base';
 
 export default function () {
   GoogleSignin.configure({
@@ -17,8 +18,7 @@ export default function () {
       const userInfo = await GoogleSignin.signIn();
       //   setState({ userInfo });
       // informações do usuário simplificada, não são as mesmas que obtemos com jwt do token
-      console.log(JSON.stringify(userInfo, null, 2))
-
+      console.log(JSON.stringify(userInfo, null, 2));
 
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -34,10 +34,13 @@ export default function () {
   }
 
   return (
-    <GoogleSigninButton
-      size={GoogleSigninButton.Size.Wide}
-      color={GoogleSigninButton.Color.Dark}
-      onPress={signIn}
-    />
+    <View>
+      <GoogleSigninButton
+        size={GoogleSigninButton.Size.Wide}
+        color={GoogleSigninButton.Color.Dark}
+        onPress={signIn}
+
+      />
+    </View>
   )
 }
