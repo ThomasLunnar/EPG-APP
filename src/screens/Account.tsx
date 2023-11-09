@@ -93,6 +93,7 @@ export function Account() {
               Sair
             </Text>
           </TouchableOpacity>
+
         </Center>
       </ScrollView>
     </VStack>

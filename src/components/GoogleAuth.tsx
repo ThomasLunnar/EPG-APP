@@ -7,6 +7,7 @@ import { WEB_CLIENT_ID } from '@env';
 import { View, Text } from 'native-base';
 
 export default function () {
+  
   GoogleSignin.configure({
     scopes: ['https://www.googleapis.com/auth/drive.readonly'],
     webClientId: WEB_CLIENT_ID
