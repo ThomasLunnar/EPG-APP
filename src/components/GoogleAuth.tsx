@@ -5,13 +5,21 @@ import {
 } from '@react-native-google-signin/google-signin';
 import { WEB_CLIENT_ID } from '@env';
 import { View, Text } from 'native-base';
+import api from "@services/api"
 
 export default function () {
-  
+
   GoogleSignin.configure({
     scopes: ['https://www.googleapis.com/auth/drive.readonly'],
     webClientId: WEB_CLIENT_ID
   });
+
+  async function fazerChamado(userEmail:string){
+    let teste = await api.post("/api/teste",{
+      email: userEmail
+    })
+    console.log(teste)
+  }
   
    async function signIn() {
     try {
@@ -20,6 +28,7 @@ export default function () {
       //   setState({ userInfo });
       // informações do usuário simplificada, não são as mesmas que obtemos com jwt do token
       console.log(JSON.stringify(userInfo, null, 2));
+      fazerChamado(userInfo.email)
 
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
