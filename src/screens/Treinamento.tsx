@@ -9,7 +9,7 @@ import SeriesSvg from '@assets/series.svg';
 import RepetitionsSvg from '@assets/repetitions.svg';
 import { Button } from '@components/Button';
 import { HomeHeader } from '@components/HomeHeader';
-import { Video } from '@components/Video';
+import { Video } from '@components/WebVideo';
 
 export function Treinamento() {
 
@@ -38,8 +38,6 @@ export function Treinamento() {
             </Heading>
           </HStack>
 
-          <Video />
-
           <Text color='white' py={4} fontSize='md'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -48,7 +46,7 @@ export function Treinamento() {
           <Button 
             variant='solid' 
             onPress={handleOpenAula} 
-            title="Entrar com Conta Google" 
+            title="Acessar aula" 
           />
 
           {/* <HStack alignItems='center' pt={4} pb={6}>

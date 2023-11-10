@@ -13,7 +13,7 @@ import { History } from '@screens/History';
 import { Account } from '@screens/Account';
 import { Perfil } from '@screens/Perfil';
 import { MeuCaderno } from '@screens/MeuCaderno';
-import { Aula } from '@screens/aula';
+import { Aula } from '@screens/Aula';
 
 type AppRoutes = {
   home: undefined;
