@@ -19,7 +19,7 @@ export function Routes() {
   return (
     <Box flex={1} bg="blue.700">
       <NavigationContainer theme={theme}>
-        {user.convidado ? < AppRoutes /> : < AuthRoutes />}
+        {user.validado ? < AppRoutes /> : < AuthRoutes />}
       </NavigationContainer>
     </Box>
   );

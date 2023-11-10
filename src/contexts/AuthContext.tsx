@@ -17,7 +17,9 @@ export const AuthContext = createContext<AuthContextDataProps>({} as AuthContext
 export function AuthContextProvider({ children }: AuthContextProviderProps) {
 
     const [user, setUser] = useState({
-        convidado: false
+        nome:"",
+        email:"",
+        validado: false
     })
 
     return (

@@ -25,10 +25,17 @@ export default function () {
       //   setState({ userInfo });
       // informações do usuário simplificada, não são as mesmas que obtemos com jwt do token
       console.log(JSON.stringify(userInfo.user.email, null, 2));
-      handleTenantKey({
-        userEmail:userInfo.user.email,
-        validarTenant: true
+      let serverResposta = await handleTenantKey({
+        email:userInfo.user.email,
+        retornarDados:true
       })
+      if(serverResposta){
+        setUser((prevState) => ({
+          ...prevState,
+          validado:serverResposta.tenantValido,
+          email:serverResposta.dadosUsuario.email
+        }))
+      }
 
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {

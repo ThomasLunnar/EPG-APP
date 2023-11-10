@@ -42,9 +42,10 @@ export function GuestSignIn() {
     console.log(guestPassword)
     if (guestPassword.GuestPassword == "lunnar23") {
       console.log(true)
-      setUser({
-        convidado:true
-      })
+      setUser((prevState) => ({
+        ...prevState,
+        validado:true
+      }))
     } else {
       console.log(false)
     }

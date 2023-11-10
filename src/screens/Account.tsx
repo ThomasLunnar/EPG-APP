@@ -21,7 +21,9 @@ export function Account() {
 
   function logOut(){
     setUser({
-      convidado:false
+      nome:"",
+      email:"",
+      validado: false
     })
   }
 

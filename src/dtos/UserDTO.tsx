@@ -1,3 +1,7 @@
 export type UserDTO = {
-    convidado: boolean;
+    email: string;
+    nome: string;
+    validado: boolean;
+
+    prevState:any;
 }

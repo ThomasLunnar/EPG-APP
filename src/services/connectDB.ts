@@ -1,9 +1,10 @@
 import api from "@services/api"
 
-export async function handleTenantKey({userEmail,validarTenant}){
-    let teste = await api.post("/api/teste2",{
-      email: userEmail,
-      validarTenant
+export async function handleTenantKey({email,retornarDados}){
+    let teste = await api.post("/api/conectarDb",{
+      email,
+      retornarDados
     })
+    console.log(teste.data)
     return(teste.data)
   }
