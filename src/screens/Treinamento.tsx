@@ -15,6 +15,10 @@ export function Treinamento() {
 
   const navigation = useNavigation<AppNavigatorRoutesProps>();
 
+  function handleOpenAula() {
+    navigation.navigate('aula');
+  }
+
   function handleGoBack() {
     navigation.goBack();
   }
@@ -41,7 +45,13 @@ export function Treinamento() {
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </Text>
 
-          <HStack alignItems='center' pt={4} pb={6}>
+          <Button 
+            variant='solid' 
+            onPress={handleOpenAula} 
+            title="Entrar com Conta Google" 
+          />
+
+          {/* <HStack alignItems='center' pt={4} pb={6}>
             <Heading color='white' fontSize="xl2" pr={2} fontWeight={200}>
               Atividades
             </Heading>
@@ -53,7 +63,7 @@ export function Treinamento() {
               <Text color='white' fontSize='lg' flex={1}>Lorem Ipsum</Text>
               <Checkbox value='teste' />
             </HStack>
-          </VStack>
+          </VStack> */}
 
         </VStack>
       </ScrollView >

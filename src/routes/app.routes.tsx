@@ -13,6 +13,7 @@ import { History } from '@screens/History';
 import { Account } from '@screens/Account';
 import { Perfil } from '@screens/Perfil';
 import { MeuCaderno } from '@screens/MeuCaderno';
+import { Aula } from '@screens/aula';
 
 type AppRoutes = {
   home: undefined;
@@ -21,6 +22,7 @@ type AppRoutes = {
   history: undefined;
   perfil: undefined;
   meuCaderno: undefined;
+  aula: undefined;
 }
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>;
@@ -92,6 +94,12 @@ export function AppRoutes() {
       <Screen
         name='treinamento'
         component={Treinamento}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name='aula'
+        component={Aula}
         options={{ tabBarButton: () => null }}
       />
 
