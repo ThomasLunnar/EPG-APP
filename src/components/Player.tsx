@@ -9,12 +9,14 @@ interface VideoPlayerProps {
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSource }) => {
   const videoRef = useRef<VideoRef>(null);
+  
+  const videoLink = `https://www.googleapis.com/drive/v3/files/${videoSource}?key=${apiKey}&alt=media`
 
   return (
     <View style={styles.container}>
           <Video
             ref={videoRef}
-            source={{ uri: videoSource }}
+            source={{ uri: videoLink }}
             style={styles.video}
             controls={true}
             paused={false}
