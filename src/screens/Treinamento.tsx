@@ -9,7 +9,6 @@ import SeriesSvg from '@assets/series.svg';
 import RepetitionsSvg from '@assets/repetitions.svg';
 import { Button } from '@components/Button';
 import { HomeHeader } from '@components/HomeHeader';
-import { Video } from '@components/WebVideo';
 
 export function Treinamento() {
 
