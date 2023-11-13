@@ -11,12 +11,14 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSource }) => {
   const videoRef = useRef<VideoRef>(null);
   
   const videoLink = `https://www.googleapis.com/drive/v3/files/${videoSource}?key=${apiKey}&alt=media`
+  //Vídeo de exemplo para testar o player
+  const videoExemple = `https://edisciplinas.usp.br/pluginfile.php/5196097/mod_resource/content/1/Teste.mp4`
 
   return (
     <View style={styles.container}>
           <Video
             ref={videoRef}
-            source={{ uri: videoLink }}
+            source={{ uri: videoExemple }}
             style={styles.video}
             controls={true}
             paused={false}
