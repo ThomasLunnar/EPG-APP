@@ -1,13 +1,13 @@
 import React, { useRef } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Video, {VideoRef} from 'react-native-video';
-import { PanGestureHandler, State } from 'react-native-gesture-handler';
 
 interface VideoPlayerProps {
   videoSource: string;
+  apiKey: string;
 }
 
-const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSource }) => {
+const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSource, apiKey }) => {
   const videoRef = useRef<VideoRef>(null);
   
   const videoLink = `https://www.googleapis.com/drive/v3/files/${videoSource}?key=${apiKey}&alt=media`
@@ -16,13 +16,13 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSource }) => {
 
   return (
     <View style={styles.container}>
-          <Video
+        <Video
             ref={videoRef}
             source={{ uri: videoExemple }}
             style={styles.video}
             controls={true}
             paused={false}
-          />
+        />
     </View>
   );
 };
@@ -30,8 +30,11 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSource }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    maxHeight: 240,
+    marginTop: 50,
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor:'#fefefe'
   },
   video: {
     position: 'absolute',

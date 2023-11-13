@@ -24,7 +24,7 @@ export default function () {
       const userInfo = await GoogleSignin.signIn();
       //   setState({ userInfo });
       // informações do usuário simplificada, não são as mesmas que obtemos com jwt do token
-      console.log(JSON.stringify(userInfo.user.email, null, 2));
+      console.log(JSON.stringify(userInfo, null, 2));
       let serverResposta = await handleTenantKey({
         email:userInfo.user.email,
         retornarDados:true
