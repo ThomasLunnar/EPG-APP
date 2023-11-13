@@ -1,36 +1,32 @@
-import { useRef } from 'react';
-import Video, {VideoRef} from 'react-native-video';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { Container, View } from 'native-base';
+import { WebView } from 'react-native-webview';
 
-// Within your render function, assuming you have a file called
-// "background.mp4" in your project. You can include multiple videos
-// on a single screen if you like.
-
-const VideoPlayer = () => {
- const videoRef = useRef<VideoRef>(null);
- const background = require('./background.mp4');
-
- return (
-   <Video 
-    // Can be a URL or a local file.
-    source={background}
-    // Store reference  
-    ref={videoRef}
-    // Callback when remote video is buffering                                      
-    onBuffer={onBuffer}
-    // Callback when video cannot be loaded              
-    onError={onError}               
-    style={styles.backgroundVideo}
-   />
- )
+interface Video {
+    videoId: string;
 }
 
-// Later on in your styles..
-var styles = StyleSheet.create({
-  backgroundVideo: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-  },
-});
+export const Video: React.FC<Video> = ({ videoId }) => {
+    const videoUrl = `https://drive.google.com/file/d/${videoId}/preview`;
+
+    return (
+        <Container
+            flex={1}
+            justifyContent='center'
+            alignItems='center'
+        >
+            <WebView
+                source={{ uri: videoUrl }}
+                javaScriptEnabled={true}
+                domStorageEnabled={true}
+                allowsInlineMediaPlayback={true}
+                h={20}
+                w='100%'
+                borderWidth={50}
+                flex={1}
+                
+            />
+        </Container>
+    );
+};
