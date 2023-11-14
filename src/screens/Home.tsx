@@ -17,12 +17,12 @@ import { TouchableOpacity } from 'react-native';
 export function Home() {
 
   const [Perfis, setPerfis] = useState(['https://github.com/ThomasLunnar.png', 'https://github.com/felipeoteh.png', 'https://github.com/Bruno-Nuness.png', 'https://github.com/VictorLunnar.png']);
-  const [Treinamentos, setTreinamentos] = useState(['Trilha de Consultoria', 'Trilha de Consultori', 'Trilha de Consultora', 'Trilha de Consultore']);
+  const [cursoCapas, setCursoCapas] = useState(['Trilha de Consultoria', 'Trilha de Consultori', 'Trilha de Consultora', 'Trilha de Consultore']);
 
   const navigation = useNavigation<AppNavigatorRoutesProps>();
 
   function handleOpenTreinamentoDetails() {
-    navigation.navigate('treinamento');
+    navigation.navigate('curso');
   }
   function handleOpenPerfilDetails() {
     navigation.navigate('perfil');
@@ -83,13 +83,13 @@ export function Home() {
             </Heading>
 
             <Text color="white" fontSize="sm">
-              {Treinamentos.length}
+              {cursoCapas.length}
             </Text>
           </HStack>
         </VStack>
 
         <FlatList
-          data={Treinamentos}
+          data={cursoCapas}
           background='blue.700'
           keyExtractor={item => item}
           renderItem={({ item }) => (
@@ -112,7 +112,7 @@ export function Home() {
             </Heading>
 
             <Text color="white" fontSize="sm">
-              {Treinamentos.length}
+              {cursoCapas.length}
             </Text>
           </HStack>
         </VStack>

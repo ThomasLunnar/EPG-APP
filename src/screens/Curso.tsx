@@ -10,7 +10,7 @@ import RepetitionsSvg from '@assets/repetitions.svg';
 import { Button } from '@components/Button';
 import { HomeHeader } from '@components/HomeHeader';
 
-export function Treinamento() {
+export function Curso() {
 
   const navigation = useNavigation<AppNavigatorRoutesProps>();
 

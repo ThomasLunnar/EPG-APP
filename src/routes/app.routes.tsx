@@ -8,7 +8,7 @@ import AccountSvg from '@assets/account.svg';
 import CadernoSvg from '@assets/caderno.svg'
 
 import { Home } from '@screens/Home';
-import { Treinamento } from '@screens/Treinamento';
+import { Curso } from '@screens/Curso';
 import { History } from '@screens/History';
 import { Account } from '@screens/Account';
 import { Perfil } from '@screens/Perfil';
@@ -17,7 +17,7 @@ import { Aula } from '@screens/Aula';
 
 type AppRoutes = {
   home: undefined;
-  treinamento: undefined;
+  curso: undefined;
   account: undefined;
   history: undefined;
   perfil: undefined;
@@ -92,8 +92,8 @@ export function AppRoutes() {
       />
 
       <Screen
-        name='treinamento'
-        component={Treinamento}
+        name='curso'
+        component={Curso}
         options={{ tabBarButton: () => null }}
       />
 
