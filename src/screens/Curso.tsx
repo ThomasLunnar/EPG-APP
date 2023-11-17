@@ -1,9 +1,11 @@
 import { TouchableOpacity } from 'react-native';
-import { Box, Heading, HStack, Icon, Image, Text, VStack, ScrollView, Checkbox } from 'native-base';
+import { Box, Heading, HStack, Icon, Image, Text, VStack, ScrollView, Checkbox, FlatList } from 'native-base';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import { AppNavigatorRoutesProps } from '@routes/app.routes';
+
+import { useCurso } from '@hooks/useCurso'
 
 import SeriesSvg from '@assets/series.svg';
 import RepetitionsSvg from '@assets/repetitions.svg';
@@ -11,6 +13,9 @@ import { Button } from '@components/Button';
 import { HomeHeader } from '@components/HomeHeader';
 
 export function Curso() {
+
+  const {curso} = useCurso()
+  console.log(curso)
 
   const navigation = useNavigation<AppNavigatorRoutesProps>();
 
@@ -61,8 +66,18 @@ export function Curso() {
               <Checkbox value='teste' />
             </HStack>
           </VStack> */}
-
+        
         </VStack>
+        <FlatList
+          data={curso.modulos}
+          keyExtractor={item => item}
+          renderItem={({ item }) => (
+            <Text w='full' color='white'>
+              {item.nome}
+            </Text>
+          )}>
+
+        </FlatList>
       </ScrollView >
     </VStack >
   );

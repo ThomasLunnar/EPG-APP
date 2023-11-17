@@ -20,15 +20,19 @@ export default function () {
   
    async function signIn() {
     try {
+      // #1 Conexão com a API do Google
       await GoogleSignin.hasPlayServices();
+      // #2 Salvamento das informações da API
       const userInfo = await GoogleSignin.signIn();
       //   setState({ userInfo });
       // informações do usuário simplificada, não são as mesmas que obtemos com jwt do token
       console.log(JSON.stringify(userInfo, null, 2));
+      // #3 Consulta na API do banco multi-Tenant
       let serverResposta = await handleTenantKey({
         email:userInfo.user.email,
-        retornarDados:true
+        retornarDados:true  
       })
+      // #4 Consulta na API do banco multi Tenant
       if(serverResposta){
         setUser((prevState) => ({
           ...prevState,
@@ -36,7 +40,11 @@ export default function () {
           email:serverResposta.dadosUsuario.email
         }))
       }
+      // #5 Limpeza dos dados de autenticação da API Google
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.disconnect();
 
+      // Escapes caso a aplicação dê erro com suas devidas manutenções
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
@@ -48,6 +56,7 @@ export default function () {
         // some other error happened
       }
     }
+    
   }
 
   return (
@@ -56,7 +65,6 @@ export default function () {
         size={GoogleSigninButton.Size.Wide}
         color={GoogleSigninButton.Color.Dark}
         onPress={signIn}
-
       />
     </View>
   )

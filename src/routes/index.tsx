@@ -6,6 +6,7 @@ import { useAuth } from '@hooks/useAuth';
 
 import { AuthRoutes } from "./auth.routes";
 import { AppRoutes } from "./app.routes";
+import { CursoContextProvider } from '@contexts/CursoContext';
 
 export function Routes() {
   const { colors } = useTheme();
@@ -19,7 +20,12 @@ export function Routes() {
   return (
     <Box flex={1} bg="blue.700">
       <NavigationContainer theme={theme}>
-        {user.validado ? < AppRoutes /> : < AuthRoutes />}
+        {user.validado ?
+          <CursoContextProvider>
+            < AppRoutes />
+          </CursoContextProvider> 
+          : 
+          < AuthRoutes />}
       </NavigationContainer>
     </Box>
   );
