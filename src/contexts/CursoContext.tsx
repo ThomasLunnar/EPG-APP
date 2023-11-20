@@ -38,7 +38,7 @@ export function CursoContextProvider({ children }: CursoContextProviderProps) {
                 refFauna: "381379180526305345",
                 nome:"Modulo 1",
                 descrição:'descrição do módulo 1',
-                aulas:[
+                aulas: [
                     {
                         ordem: 0,
                         refFauna: "381379673417842759",

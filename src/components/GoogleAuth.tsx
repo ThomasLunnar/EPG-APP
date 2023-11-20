@@ -26,21 +26,25 @@ export default function () {
       const userInfo = await GoogleSignin.signIn();
       //   setState({ userInfo });
       // informações do usuário simplificada, não são as mesmas que obtemos com jwt do token
-      console.log(JSON.stringify(userInfo, null, 2));
+      // console.log(JSON.stringify(userInfo, null, 2));
+      let primeiroNome = JSON.stringify(userInfo.user.givenName)
+      let segundoNome = JSON.stringify(userInfo.user.familyName)
+      // console.log(typeof primeiroNome)
       // #3 Consulta na API do banco multi-Tenant
       let serverResposta = await handleTenantKey({
         email:userInfo.user.email,
-        retornarDados:true  
+        retornarDados:true,
       })
       // #4 Consulta na API do banco multi Tenant
       if(serverResposta){
         setUser((prevState) => ({
           ...prevState,
           validado:serverResposta.tenantValido,
-          email:serverResposta.dadosUsuario.email
+          email:serverResposta.dadosUsuario.email,
+          nome: primeiroNome
         }))
       }
-      // #5 Limpeza dos dados de autenticação da API Google
+      // #5 Limpeza dos dados de autenticação da API Googler
       var auth2 = gapi.auth2.getAuthInstance();
       auth2.disconnect();
 

@@ -14,7 +14,7 @@ import { HomeHeader } from '@components/HomeHeader';
 
 export function Curso() {
 
-  const {curso} = useCurso()
+  const { curso } = useCurso()
   console.log(curso)
 
   const navigation = useNavigation<AppNavigatorRoutesProps>();
@@ -47,10 +47,10 @@ export function Curso() {
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </Text>
 
-          <Button 
-            variant='solid' 
-            onPress={handleOpenAula} 
-            title="Acessar aula" 
+          <Button
+            variant='solid'
+            onPress={handleOpenAula}
+            title="Acessar aula"
           />
 
           {/* <HStack alignItems='center' pt={4} pb={6}>
@@ -66,18 +66,42 @@ export function Curso() {
               <Checkbox value='teste' />
             </HStack>
           </VStack> */}
-        
-        </VStack>
-        <FlatList
-          data={curso.modulos}
-          keyExtractor={item => item}
-          renderItem={({ item }) => (
-            <Text w='full' color='white'>
-              {item.nome}
-            </Text>
-          )}>
 
-        </FlatList>
+
+          <FlatList
+            data={curso.modulos}
+            keyExtractor={item => item}
+            renderItem={({ item }) => (
+              <VStack>
+                <Text w='full'
+                  color='white'
+                  p={4} borderColor='white'
+                  borderWidth={1} borderRadius={100} marginTop={5}>
+                  {item.nome}
+                </Text>
+
+                <FlatList
+                  data={item.aulas}
+                  keyExtractor={item => item}
+                  renderItem={({ item }) => (
+                    <VStack px={4}>
+                      <Text w='full'
+                        color='white'
+                        py={2} px={4} borderColor='white'
+                        borderWidth={1} borderRadius={100} marginTop={5}>
+                        {item.nome}
+                      </Text>
+
+
+
+                    </VStack>
+                  )} />
+
+              </VStack>
+            )} />
+
+        </VStack>
+
       </ScrollView >
     </VStack >
   );

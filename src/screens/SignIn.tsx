@@ -86,11 +86,11 @@ export function SignIn() {
             secureTextEntry
           /> */}
 
-          <Button 
+          {/* <Button 
             title="Entrar com Conta Google" 
             onPress={handleGoogleSignIn}
             isLoading={isAuthenticating}
-          />
+          /> */}
 
           <NewAuth/>
         </Center>
