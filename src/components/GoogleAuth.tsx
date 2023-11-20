@@ -27,8 +27,10 @@ export default function () {
       //   setState({ userInfo });
       // informações do usuário simplificada, não são as mesmas que obtemos com jwt do token
       // console.log(JSON.stringify(userInfo, null, 2));
-      let primeiroNome = JSON.stringify(userInfo.user.givenName)
-      let segundoNome = JSON.stringify(userInfo.user.familyName)
+      let primeiroNomeJSON = JSON.stringify(userInfo.user.givenName, null, 2)
+      let primeiroNome = primeiroNomeJSON.replace(/^"(.*)"$/, '$1');
+      let segundoNomeJSON = JSON.stringify(userInfo.user.familyName, null, 2)
+      let segundoNome = segundoNomeJSON.replace(/^"(.*)"$/, '$1');
       // console.log(typeof primeiroNome)
       // #3 Consulta na API do banco multi-Tenant
       let serverResposta = await handleTenantKey({

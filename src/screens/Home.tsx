@@ -5,7 +5,7 @@ import { FlatList, Heading, HStack, Text, VStack, ScrollView } from 'native-base
 //componentes
 import { Group } from '@components/Group';
 import { HomeHeader } from '@components/HomeHeader';
-import { TreinamentoCard } from '@components/TreinamentoCard';
+import { CursoRender } from '@components/CursoRender';
 
 //rotas
 import { AppNavigatorRoutesProps } from '@routes/app.routes';
@@ -17,13 +17,9 @@ import { TouchableOpacity } from 'react-native';
 export function Home() {
 
   const [Perfis, setPerfis] = useState(['https://github.com/ThomasLunnar.png', 'https://github.com/felipeoteh.png', 'https://github.com/Bruno-Nuness.png', 'https://github.com/VictorLunnar.png']);
-  const [cursoCapas, setCursoCapas] = useState(['Trilha de Consultoria', 'Trilha de Consultori', 'Trilha de Consultora', 'Trilha de Consultore']);
 
   const navigation = useNavigation<AppNavigatorRoutesProps>();
 
-  function handleOpenTreinamentoDetails() {
-    navigation.navigate('curso');
-  }
   function handleOpenPerfilDetails() {
     navigation.navigate('perfil');
   }
@@ -76,34 +72,7 @@ export function Home() {
           }}
         />
 
-        <VStack px={8}>
-          <HStack justifyContent="space-between" my={5}>
-            <Heading color="white" fontSize="xl" fontWeight={600}>
-              Trilha <Text fontWeight={800}>Estratégica</Text>
-            </Heading>
-
-            <Text color="white" fontSize="sm">
-              {cursoCapas.length}
-            </Text>
-          </HStack>
-        </VStack>
-
-        <FlatList
-          data={cursoCapas}
-          background='blue.700'
-          keyExtractor={item => item}
-          renderItem={({ item }) => (
-            <TreinamentoCard onPress={handleOpenTreinamentoDetails} />
-          )}
-          alwaysBounceHorizontal
-          showsVerticalScrollIndicator={false}
-          showsHorizontalScrollIndicator={false}
-          horizontal
-          px={8}
-          _contentContainerStyle={{
-            paddingRight: 8
-          }}
-        />
+        <CursoRender/>
 
         <VStack px={8}>
           <HStack justifyContent="space-between" my={5}>
@@ -112,7 +81,7 @@ export function Home() {
             </Heading>
 
             <Text color="white" fontSize="sm">
-              {cursoCapas.length}
+              {Perfis.length}
             </Text>
           </HStack>
         </VStack>

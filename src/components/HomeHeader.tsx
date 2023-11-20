@@ -5,9 +5,14 @@ import { MaterialIcons } from '@expo/vector-icons';
 import LogoSvg from '@assets/logo-coroa.svg';
 import AccountImg from '@assets/userPhotoDefault.png';
 
+import { useAuth } from '@hooks/useAuth'
+
 import { UserPhoto } from './UserPhoto';
 
 export function HomeHeader() {
+
+  const { user } = useAuth();
+
   return (
     <HStack bg="blue.700" pt={12}  px={8} alignItems="center">
       <UserPhoto 
@@ -23,7 +28,7 @@ export function HomeHeader() {
         </Text>
 
         <Heading color="gray.100" fontSize="md">
-          Convidado
+          {user.nome}
         </Heading>
       </VStack>
 

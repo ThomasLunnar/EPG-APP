@@ -1,5 +1,5 @@
 import { TouchableOpacity } from 'react-native';
-import { Box, Heading, HStack, Icon, Image, Text, VStack, ScrollView, Checkbox, FlatList } from 'native-base';
+import { Box, Heading, HStack, Icon, Image, Text, VStack, ScrollView, Checkbox, FlatList, Center, Input } from 'native-base';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -28,24 +28,11 @@ export function Curso() {
   }
 
   return (
-    <VStack>
+    <VStack flex={1}>
       <HomeHeader />
+
       <ScrollView contentContainerStyle={{ paddingBottom: 36 }}>
-        <VStack p={8}>
-
-          <HStack alignItems='center' pb={6}>
-            <Heading color='white' fontSize="xl2" pr={2} fontWeight={200}>
-              Trilha de
-            </Heading>
-            <Heading color='white' fontSize="xl2">
-              Consultoria
-            </Heading>
-          </HStack>
-
-          <Text color='white' py={4} fontSize='md'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </Text>
+        <VStack mt={6} px={10}>
 
           <Button
             variant='solid'
@@ -53,24 +40,11 @@ export function Curso() {
             title="Acessar aula"
           />
 
-          {/* <HStack alignItems='center' pt={4} pb={6}>
-            <Heading color='white' fontSize="xl2" pr={2} fontWeight={200}>
-              Atividades
-            </Heading>
-
-          </HStack>
-
-          <VStack pb={4}>
-            <HStack p={3} borderColor='white' borderWidth={1} borderRadius={5} alignItems='center'>
-              <Text color='white' fontSize='lg' flex={1}>Lorem Ipsum</Text>
-              <Checkbox value='teste' />
-            </HStack>
-          </VStack> */}
-
-
           <FlatList
             data={curso.modulos}
+            scroll
             keyExtractor={item => item}
+
             renderItem={({ item }) => (
               <VStack>
                 <Text w='full'
@@ -83,6 +57,8 @@ export function Curso() {
                 <FlatList
                   data={item.aulas}
                   keyExtractor={item => item}
+                  width='full'
+                  flex={1}
                   renderItem={({ item }) => (
                     <VStack px={4}>
                       <Text w='full'
@@ -100,9 +76,10 @@ export function Curso() {
               </VStack>
             )} />
 
-        </VStack>
+            
 
-      </ScrollView >
-    </VStack >
+        </VStack>
+      </ScrollView>
+    </VStack>
   );
 }
