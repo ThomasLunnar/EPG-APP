@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { FlatList, Text, Button, VStack, HStack, Heading } from "native-base";
 
@@ -19,11 +19,23 @@ async function getCursos() {
 
 export function CursoRender() {
 
-    const [cursoCapas, setCursoCapas] = useState(getCursos());
+    const [cursoCapas, setCursoCapas] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            // Substitua a linha abaixo pela chamada real da sua função assíncrona
+            const resultado = await getCursos();
+            setCursoCapas(resultado);
+          } catch (erro) {
+            console.error('Erro ao buscar cursos:', erro);
+          }
+        };
+    
+        fetchData();
+      }, []);
 
     const navigation = useNavigation<AppNavigatorRoutesProps>();
-
-
 
     function handleOpenTreinamentoDetails() {
         navigation.navigate('curso');
@@ -48,7 +60,7 @@ export function CursoRender() {
                 background='blue.700'
                 keyExtractor={item => item}
                 renderItem={({ item }) => (
-                    <TreinamentoCard onPress={handleOpenTreinamentoDetails} />
+                    <TreinamentoCard onPress={handleOpenTreinamentoDetails} nome={item.nome}/>
                 )}
                 alwaysBounceHorizontal
                 showsVerticalScrollIndicator={false}

@@ -6,13 +6,13 @@ import PlaceholderTreinamento from '@assets/placeholder/trilhas-de-consultoria.j
 import { Entypo } from '@expo/vector-icons';
 
 type Props = TouchableOpacityProps & {
-  
+  nome:string;
 };
 
-export function TreinamentoCard({ ...rest }: Props) {
+export function TreinamentoCard({nome, ...rest }: Props) {
   return (
     <TouchableOpacity {...rest}>
-      <HStack alignItems="center" rounded="md" mb={3}>
+      <VStack alignItems="center" rounded="md" mb={3}>
         <Image 
           source={PlaceholderTreinamento}
           alt="Imagem do exercício"
@@ -23,7 +23,8 @@ export function TreinamentoCard({ ...rest }: Props) {
           mr={6}
           resizeMode="cover"
         />
-      </HStack>
+        <Text color='white'>{nome}</Text>
+      </VStack>
     </TouchableOpacity>
   );
 }
