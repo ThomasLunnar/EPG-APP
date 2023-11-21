@@ -11,35 +11,26 @@ import { AppNavigatorRoutesProps } from '@routes/app.routes';
 //card placeholder
 import { TreinamentoCard } from "./TreinamentoCard";
 
-async function getCursos() {
-    let serverResposta = await handleGetCursos()
-    console.log(serverResposta.data)
-    return (serverResposta.data)
-}
-
-export function CursoRender() {
-
-    const [cursoCapas, setCursoCapas] = useState([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            // Substitua a linha abaixo pela chamada real da sua função assíncrona
-            const resultado = await getCursos();
-            setCursoCapas(resultado);
-          } catch (erro) {
-            console.error('Erro ao buscar cursos:', erro);
-          }
-        };
-    
-        fetchData();
-      }, []);
+export function CursoRender(state: any, trilha: string) {
 
     const navigation = useNavigation<AppNavigatorRoutesProps>();
 
     function handleOpenTreinamentoDetails() {
         navigation.navigate('curso');
     }
+
+    const [cursosEstrategicos, setCursosEstrategicos] = useState([]);
+
+    // Efeito para realizar o filtro ao montar o componente
+    useEffect(() => {
+        // Filtrar os cursos com a categoria "Estratégica"
+        const cursosFiltrados = state.state.filter(curso => curso.category == 'Estratégica');
+
+        // Atualizar o estado com os cursos filtrados
+        setCursosEstrategicos(cursosFiltrados);
+    }, []);
+
+    console.log(cursosEstrategicos)
 
     return (
         <VStack>
@@ -50,17 +41,17 @@ export function CursoRender() {
                     </Heading>
 
                     <Text color="white" fontSize="sm">
-                        {cursoCapas.length}
+                        {state.length}
                     </Text>
                 </HStack>
             </VStack>
 
             <FlatList
-                data={cursoCapas}
+                data={cursosEstrategicos}
                 background='blue.700'
                 keyExtractor={item => item}
                 renderItem={({ item }) => (
-                    <TreinamentoCard onPress={handleOpenTreinamentoDetails} nome={item.nome}/>
+                    <TreinamentoCard onPress={handleOpenTreinamentoDetails} nome={item.nome} />
                 )}
                 alwaysBounceHorizontal
                 showsVerticalScrollIndicator={false}

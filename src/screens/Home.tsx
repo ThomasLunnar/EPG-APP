@@ -1,18 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native';
 import { FlatList, Heading, HStack, Text, VStack, ScrollView } from 'native-base';
 
 //componentes
-import { Group } from '@components/Group';
 import { HomeHeader } from '@components/HomeHeader';
 import { CursoRender } from '@components/CursoRender';
 
 //rotas
 import { AppNavigatorRoutesProps } from '@routes/app.routes';
 
+//
+import { handleGetCursos } from '@services/connectDB';
+
 //momentaneo
 import { UserPhoto } from '@components/UserPhoto';
-import { TouchableOpacity } from 'react-native';
+
+async function getCursos() {
+  let serverResposta = await handleGetCursos()
+  // console.log(serverResposta.data)
+  return (serverResposta.data)
+}
 
 export function Home() {
 
@@ -24,29 +32,26 @@ export function Home() {
     navigation.navigate('perfil');
   }
 
+  const [cursos, setCursos] = useState([]);
+
+    useEffect(() => {
+        const fetchCursos = async () => {
+          try {
+            // Substitua a linha abaixo pela chamada real da sua função assíncrona
+            const resultado = await getCursos();
+            setCursos(resultado);
+          } catch (erro) {
+            console.error('Erro ao buscar cursos:', erro);
+          }
+        };
+    
+        fetchCursos();
+      }, []);
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
       <VStack flex={1}>
         <HomeHeader />
-
-        {/* <FlatList 
-          data={groups}
-          keyExtractor={item => item}
-          renderItem={({ item }) => (
-            <Group 
-              name={item}
-              isActive={groupSelected.toLocaleUpperCase() === item.toLocaleUpperCase()}
-              onPress={() => setGroupSelected(item)}
-            />
-          )}
-          horizontal
-          _contentContainerStyle={{
-            px: 8,
-          }}
-          my={10}
-          maxH={10}
-          minH={10}
-        /> */}
 
         <FlatList
           data={Perfis}
@@ -72,7 +77,7 @@ export function Home() {
           }}
         />
 
-        <CursoRender/>
+        <CursoRender state={cursos} trilha='Estratégica'/>
 
         <VStack px={8}>
           <HStack justifyContent="space-between" my={5}>
