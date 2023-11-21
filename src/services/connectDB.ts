@@ -10,7 +10,7 @@ export async function handleTenantKey({ email, retornarDados }) {
 }
 
 export async function handleGetCursos() {
-  let TodosCursos = await api.get("/api/curso/list")
+  let TodosCursos = await api.get("/api/curso/publicado")
   console.log(TodosCursos.data)
   return (TodosCursos.data)
 }

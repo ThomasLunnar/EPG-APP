@@ -15,7 +15,7 @@ export function TreinamentoCard({nome, ...rest }: Props) {
       <VStack alignItems="center" rounded="md" mb={3}>
         <Image 
           source={PlaceholderTreinamento}
-          alt="Imagem do exercício"
+          alt="Capa treinamento"
           w={48}
           h={72}
 
