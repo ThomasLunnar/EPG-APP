@@ -11,43 +11,68 @@ import { AppNavigatorRoutesProps } from '@routes/app.routes';
 //card placeholder
 import { TreinamentoCard } from "./TreinamentoCard";
 
-export function CursoRender(state: any, trilha: string) {
+
+async function getCursos() {
+    let serverResposta = await handleGetCursos()
+    console.log(serverResposta.data)
+    return (serverResposta.data)
+}
+
+export function CursoRender({ state, trilha }) {
+
+
+    // let state = props.state
+    // let trilha = props.trilha
+    
+    // let { state, trilha } = props
+
+    // console.log(typeof state)
+    // console.log("state")
+    // console.log("trilha:", trilha)
+
+    // return (<></>)
+    const [cursoCapas, setCursoCapas] = useState(getCursos());
+
 
     const navigation = useNavigation<AppNavigatorRoutesProps>();
+
+
 
     function handleOpenTreinamentoDetails() {
         navigation.navigate('curso');
     }
 
-    const [cursosEstrategicos, setCursosEstrategicos] = useState([]);
+    const [cursosFiltrados, setCursosFiltrados] = useState(state.filter(curso => curso.category == trilha));
 
     // Efeito para realizar o filtro ao montar o componente
     useEffect(() => {
         // Filtrar os cursos com a categoria "Estratégica"
-        const cursosFiltrados = state.state.filter(curso => curso.category == 'Estratégica');
+        // const cursosFiltrados = state.filter(curso => curso.category == trilha);
+        // console.log(cursosFiltrados)
+        // console.log("cursosFiltrados")
+        // // Atualizar o estado com os cursos filtrados
+        // if(cursosFiltrados.length > 0){
 
-        // Atualizar o estado com os cursos filtrados
-        setCursosEstrategicos(cursosFiltrados);
+        //     setCursosEstrategicos(cursosFiltrados);
+        // }
     }, []);
-
-    console.log(cursosEstrategicos)
 
     return (
         <VStack>
             <VStack px={8}>
                 <HStack justifyContent="space-between" my={5}>
                     <Heading color="white" fontSize="xl" fontWeight={600}>
-                        Trilha <Text fontWeight={800}>Estratégica</Text>
+                        Trilha <Text fontWeight={800}>{trilha}</Text>
                     </Heading>
 
                     <Text color="white" fontSize="sm">
-                        {state.length}
+                        {cursosFiltrados.length}
                     </Text>
                 </HStack>
             </VStack>
 
             <FlatList
-                data={cursosEstrategicos}
+                data={cursosFiltrados}
                 background='blue.700'
                 keyExtractor={item => item}
                 renderItem={({ item }) => (

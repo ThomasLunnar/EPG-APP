@@ -16,11 +16,11 @@ import { handleGetCursos } from '@services/connectDB';
 //momentaneo
 import { UserPhoto } from '@components/UserPhoto';
 
-async function getCursos() {
-  let serverResposta = await handleGetCursos()
-  // console.log(serverResposta.data)
-  return (serverResposta.data)
-}
+// async function getCursos() {
+//   let serverResposta = await handleGetCursos()
+//   // console.log(serverResposta.data)
+//   return serverResposta.data
+// }
 
 export function Home() {
 
@@ -34,19 +34,23 @@ export function Home() {
 
   const [cursos, setCursos] = useState([]);
 
-    useEffect(() => {
-        const fetchCursos = async () => {
-          try {
-            // Substitua a linha abaixo pela chamada real da sua função assíncrona
-            const resultado = await getCursos();
-            setCursos(resultado);
-          } catch (erro) {
-            console.error('Erro ao buscar cursos:', erro);
-          }
-        };
-    
-        fetchCursos();
-      }, []);
+  const fetchCursos = async () => {
+    try {
+      // Substitua a linha abaixo pela chamada real da sua função assíncrona
+      // const resultado = await getCursos();
+      const getCursos = await handleGetCursos()
+      let dadosCursos = getCursos.data
+      // console.log(dadosCursos)
+      // console.log("dadosCursos")
+      setCursos(dadosCursos);
+    } catch (erro) {
+      console.error('Erro ao buscar cursos:', erro);
+    }
+  };
+
+  useEffect(() => {
+    fetchCursos();
+  }, []);
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
@@ -76,8 +80,9 @@ export function Home() {
             paddingRight: 8
           }}
         />
-
-        <CursoRender state={cursos} trilha='Estratégica'/>
+        {cursos.length > 0 &&
+          <CursoRender state={cursos} trilha='Estratégica' />
+        }
 
         <VStack px={8}>
           <HStack justifyContent="space-between" my={5}>
@@ -113,6 +118,10 @@ export function Home() {
             paddingRight: 8
           }}
         />
+
+        {cursos.length > 0 &&
+          <CursoRender state={cursos} trilha='Profissional' />
+        }
 
 
       </VStack>
