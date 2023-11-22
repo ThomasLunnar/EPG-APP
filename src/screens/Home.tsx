@@ -54,7 +54,7 @@ export function Home() {
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
-      <VStack flex={1}>
+      <VStack flex={1} mb={10}>
         <HomeHeader />
 
         <FlatList
@@ -86,11 +86,15 @@ export function Home() {
 
         <VStack px={8}>
           <HStack justifyContent="space-between" my={5}>
-            <Heading color="white" fontSize="xl" fontWeight={400}>
-              Meu <Text fontWeight={800}>Time</Text>
-            </Heading>
-
-            <Text color="white" fontSize="sm">
+            <HStack>
+              <Text color='white' fontSize="xl">
+                Meu
+              </Text>
+              <Heading color='white' fontSize="xl" ml='1'  lineHeight={30}>
+                Time
+              </Heading>
+            </HStack>
+            <Text color="white" fontSize="sm" alignItems='baseline' lineHeight={30}>
               {Perfis.length}
             </Text>
           </HStack>

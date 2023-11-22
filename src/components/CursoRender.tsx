@@ -18,17 +18,12 @@ async function getCursos() {
     return (serverResposta.data)
 }
 
-export function CursoRender({ state, trilha }) {
+type props = {
+    state: any,
+    trilha: ['Estratégica', 'Profissional']
+}
 
-
-    // let state = props.state
-    // let trilha = props.trilha
-    
-    // let { state, trilha } = props
-
-    // console.log(typeof state)
-    // console.log("state")
-    // console.log("trilha:", trilha)
+export function CursoRender({ state, trilha }: props) {
 
     // return (<></>)
     const [cursoCapas, setCursoCapas] = useState(getCursos());
@@ -44,28 +39,19 @@ export function CursoRender({ state, trilha }) {
 
     const [cursosFiltrados, setCursosFiltrados] = useState(state.filter(curso => curso.category == trilha));
 
-    // Efeito para realizar o filtro ao montar o componente
-    useEffect(() => {
-        // Filtrar os cursos com a categoria "Estratégica"
-        // const cursosFiltrados = state.filter(curso => curso.category == trilha);
-        // console.log(cursosFiltrados)
-        // console.log("cursosFiltrados")
-        // // Atualizar o estado com os cursos filtrados
-        // if(cursosFiltrados.length > 0){
-
-        //     setCursosEstrategicos(cursosFiltrados);
-        // }
-    }, []);
-
     return (
         <VStack>
             <VStack px={8}>
                 <HStack justifyContent="space-between" my={5}>
-                    <Heading color="white" fontSize="xl" fontWeight={600}>
-                        Trilha <Text fontWeight={800}>{trilha}</Text>
-                    </Heading>
-
-                    <Text color="white" fontSize="sm">
+                    <HStack>
+                        <Text color='white' fontSize="xl">
+                            Trilha
+                        </Text>
+                        <Heading color='white' fontSize="xl" ml='1' lineHeight={30}>
+                            {trilha}
+                        </Heading>
+                    </HStack>
+                    <Text color="white" fontSize="sm" alignItems='baseline' lineHeight={30}>
                         {cursosFiltrados.length}
                     </Text>
                 </HStack>

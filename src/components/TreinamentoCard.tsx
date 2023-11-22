@@ -12,7 +12,7 @@ type Props = TouchableOpacityProps & {
 export function TreinamentoCard({nome, ...rest }: Props) {
   return (
     <TouchableOpacity {...rest}>
-      <VStack alignItems="center" rounded="md" mb={3}>
+      <VStack alignItems="center" rounded="md">
         <Image 
           source={PlaceholderTreinamento}
           alt="Capa treinamento"
