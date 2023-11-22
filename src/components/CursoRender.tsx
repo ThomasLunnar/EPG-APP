@@ -14,7 +14,7 @@ import { TreinamentoCard } from "./TreinamentoCard";
 
 async function getCursos() {
     let serverResposta = await handleGetCursos()
-    console.log(serverResposta.data)
+    // console.log(serverResposta.data)
     return (serverResposta.data)
 }
 
@@ -28,10 +28,7 @@ export function CursoRender({ state, trilha }: props) {
     // return (<></>)
     const [cursoCapas, setCursoCapas] = useState(getCursos());
 
-
     const navigation = useNavigation<AppNavigatorRoutesProps>();
-
-
 
     function handleOpenTreinamentoDetails() {
         navigation.navigate('curso');

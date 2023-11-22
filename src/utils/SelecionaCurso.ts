@@ -8,21 +8,26 @@ type Props = {
     CursoId: string
 }
 
-export async function SelelecionaCurso({ CursoId }: Props) {
+export async function SelelecionaCurso(CursoId: any) {
 
     const { setCurso } = useCurso();
 
-    async function getCurso() {
-        let serverResposta = await handleGetCursosId(CursoId)
-        console.log(serverResposta.data)
-        return (serverResposta.data)
+    try {
+        const getCurso = await handleGetCursosId({CursoId})
+        let dadosCurso = getCurso.data
+        console.log(dadosCurso)
+        console.log('dadosCurso')
+
+        //Salvar resposta do Get Curso em uma variavel
+
+        // setCurso((prevState) => ({
+        //     ...prevState,
+        //     nome: "Curso Exemplo",
+        //     descricao: "Curso criado para servir de exemplo na modelagem de dados",
+        // }))
+
+        return dadosCurso
+    } catch (erro) {
+        console.error('Erro ao buscar cursos:', erro);
     }
-
-    //Salvar resposta do Get Curso em uma variavel
-
-    setCurso((prevState) => ({
-        ...prevState,
-        nome: "Curso Exemplo",
-        descricao: "Curso criado para servir de exemplo na modelagem de dados",
-    }))
 }

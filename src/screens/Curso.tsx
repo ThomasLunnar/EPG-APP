@@ -15,7 +15,7 @@ import { HomeHeader } from '@components/HomeHeader';
 export function Curso() {
 
   const { curso } = useCurso()
-  console.log(curso)
+  // console.log(curso)
 
   const navigation = useNavigation<AppNavigatorRoutesProps>();
 

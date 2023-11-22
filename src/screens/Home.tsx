@@ -10,11 +10,14 @@ import { CursoRender } from '@components/CursoRender';
 //rotas
 import { AppNavigatorRoutesProps } from '@routes/app.routes';
 
-//
-import { handleGetCursos } from '@services/connectDB';
+//Conexão DB
+import { handleGetCursos, handleGetCursosId  } from '@services/connectDB';
+
+import{ SelelecionaCurso } from '@utils/SelecionaCurso'
 
 //momentaneo
 import { UserPhoto } from '@components/UserPhoto';
+import { useCurso } from '@hooks/useCurso';
 
 // async function getCursos() {
 //   let serverResposta = await handleGetCursos()
@@ -36,8 +39,6 @@ export function Home() {
 
   const fetchCursos = async () => {
     try {
-      // Substitua a linha abaixo pela chamada real da sua função assíncrona
-      // const resultado = await getCursos();
       const getCursos = await handleGetCursos()
       let dadosCursos = getCursos.data
       // console.log(dadosCursos)
@@ -47,6 +48,14 @@ export function Home() {
       console.error('Erro ao buscar cursos:', erro);
     }
   };
+
+  const idTest = '382013278525587520'
+
+  try{
+    SelelecionaCurso({CursoId : idTest})
+  } catch (erro) {
+    console.error('Erro na seleção de curso', erro);
+  }
 
   useEffect(() => {
     fetchCursos();
