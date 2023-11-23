@@ -8,7 +8,7 @@ type Props = {
     CursoId: string
 }
 
-export async function SelelecionaCurso(CursoId: any) {
+export async function SelelecionaCurso({CursoId}) {
 
     const { setCurso } = useCurso();
 

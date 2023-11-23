@@ -90,7 +90,7 @@ export function Home() {
           }}
         />
         {cursos.length > 0 &&
-          <CursoRender state={cursos} trilha='Estratégica' />
+          <CursoRender state={cursos} trilha="Estratégica" />
         }
 
         <VStack px={8}>
