@@ -34,6 +34,10 @@ export function Curso() {
       <ScrollView contentContainerStyle={{ paddingBottom: 36 }}>
         <VStack mt={6} px={10}>
 
+          <Heading color='white' flex={1} textAlign='center' mb={4}>
+            {curso.nome}
+          </Heading>
+
           <Button
             variant='solid'
             onPress={handleOpenAula}

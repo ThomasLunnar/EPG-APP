@@ -7,14 +7,16 @@ import { Entypo } from '@expo/vector-icons';
 
 type Props = TouchableOpacityProps & {
   nome:string;
+  capa:string;
 };
 
-export function TreinamentoCard({nome, ...rest }: Props) {
+export function TreinamentoCard({nome,capa, ...rest }: Props) {
+
   return (
     <TouchableOpacity {...rest}>
       <VStack alignItems="center" rounded="md">
         <Image 
-          source={PlaceholderTreinamento}
+          source= {{uri:capa}}
           alt="Capa treinamento"
           w={48}
           h={72}

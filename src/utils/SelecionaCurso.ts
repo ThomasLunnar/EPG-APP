@@ -2,6 +2,12 @@ import { useState } from 'react'
 
 import { handleGetCursosId } from '@services/connectDB'
 
+//navigation
+import { useNavigation } from '@react-navigation/native';
+
+//rotas
+import { AppNavigatorRoutesProps } from '@routes/app.routes';
+
 import { useCurso } from '@hooks/useCurso'
 
 type Props = {
@@ -10,8 +16,10 @@ type Props = {
 
 export async function SelelecionaCurso({CursoId}) {
 
-    const { setCurso } = useCurso();
+    // const navigation = useNavigation<AppNavigatorRoutesProps>();
 
+    const { setCurso } = useCurso();
+    console.log('inicio SelecionaCurso')
     try {
         const getCurso = await handleGetCursosId({CursoId})
         let dadosCurso = getCurso.data
@@ -20,14 +28,16 @@ export async function SelelecionaCurso({CursoId}) {
 
         //Salvar resposta do Get Curso em uma variavel
 
-        // setCurso((prevState) => ({
-        //     ...prevState,
-        //     nome: "Curso Exemplo",
-        //     descricao: "Curso criado para servir de exemplo na modelagem de dados",
-        // }))
+        setCurso((prevState) => ({
+            ...prevState,
+            nome: dadosCurso.nome,
+            descricao: "Curso criado para servir de exemplo na modelagem de dados",
+        }))
 
-        return dadosCurso
+        // navigation.navigate('curso');
+
+        // return dadosCurso
     } catch (erro) {
-        console.error('Erro ao buscar cursos:', erro);
+        console.error('Erro ao buscar o curso:', erro);
     }
 }

@@ -41,21 +41,21 @@ export function Home() {
     try {
       const getCursos = await handleGetCursos()
       let dadosCursos = getCursos.data
-      // console.log(dadosCursos)
-      // console.log("dadosCursos")
+      console.log(dadosCursos)
+      console.log("dadosCursos")
       setCursos(dadosCursos);
     } catch (erro) {
       console.error('Erro ao buscar cursos:', erro);
     }
   };
 
-  const idTest = '382013278525587520'
+  // const idTest = '382013278525587520'
 
-  try{
-    SelelecionaCurso({CursoId : idTest})
-  } catch (erro) {
-    console.error('Erro na seleção de curso', erro);
-  }
+  // try{
+  //   SelelecionaCurso({CursoId : idTest})
+  // } catch (erro) {
+  //   console.error('Erro na seleção de curso', erro);
+  // }
 
   useEffect(() => {
     fetchCursos();

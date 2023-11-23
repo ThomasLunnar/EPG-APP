@@ -14,7 +14,7 @@ export function HomeHeader() {
   const { user } = useAuth();
 
   return (
-    <HStack bg="blue.900" px={8} alignItems="center">
+    <HStack bg="blue.900" px={8} mt={12} alignItems="center">
       <UserPhoto 
         source={AccountImg}
         size={16}

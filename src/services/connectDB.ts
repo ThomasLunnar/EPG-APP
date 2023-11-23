@@ -21,13 +21,14 @@ export async function handleGetCursos() {
 //   return Cursofiltrado.data
 // }
 
-export async function handleGetCursosId({cursoId}) {
-  let cursoUrl = `/api/curso/list/id/${cursoId}`
+export async function handleGetCursosId({CursoId}) {
+  let cursoUrl = `/api/curso/list/id/${CursoId}`
   try{
     console.log(cursoUrl)
-    let Cursofiltrado = await api.get(cursoUrl)
     console.log('cursoUrl')
+    let Cursofiltrado = await api.get(cursoUrl)
     console.log(Cursofiltrado.data)
+    console.log('Cursofiltrado.data')
     return Cursofiltrado.data
   } catch(erro){
     console.error('ruim no axios')
