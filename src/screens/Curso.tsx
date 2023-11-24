@@ -12,6 +12,7 @@ import { HomeHeader } from '@components/HomeHeader';
 import { Video } from "@components/Video";
 
 import Collapsible from 'react-native-collapsible';
+import { ButtonMenor} from '@components/ButtonMenor';
 
 export function Curso() {
 
@@ -86,11 +87,10 @@ export function Curso() {
               Módulos
             </Heading>
           </TouchableOpacity>
-          <Collapsible collapsed={moduloCollapsed}>
+          <Collapsible collapsed={moduloCollapsed} align='bottom'>
             
             <FlatList
               data={curso.modulos}
-              scroll
               keyExtractor={(item, i) => i.toString()}
               renderItem={({ item, index }) => (
                 <VStack>
@@ -129,7 +129,10 @@ export function Curso() {
               )} />
             </Collapsible>
 
-
+            <HStack gap={2}>
+              <ButtonMenor title='Aula anterior' />
+              <ButtonMenor title='Próxima aula >' />
+            </HStack>
 
         </VStack>
       </ScrollView>
