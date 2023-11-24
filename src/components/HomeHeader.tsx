@@ -14,7 +14,7 @@ export function HomeHeader() {
   const { user } = useAuth();
 
   return (
-    <HStack bg="blue.900" px={8} alignItems="center">
+    <HStack bg="blue.800" px={8} pt={12} mb={6} alignItems="center">
       <UserPhoto 
         source={AccountImg}
         size={16}
@@ -34,7 +34,9 @@ export function HomeHeader() {
 
 
       <TouchableOpacity>
+        
         <LogoSvg 
+          
           width={75}
         />
       </TouchableOpacity>

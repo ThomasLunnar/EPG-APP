@@ -7,9 +7,10 @@ import { AppNavigatorRoutesProps } from '@routes/app.routes';
 
 import { useCurso } from '@hooks/useCurso'
 
-import { Button } from '@components/Button';
 import { HomeHeader } from '@components/HomeHeader';
 import { Video } from "@components/Video";
+
+import { MeuAcordeao } from '@components/Accordion';
 
 export function Curso() {
 
@@ -42,17 +43,12 @@ export function Curso() {
             {curso.nome}
           </Heading>
 
+          <MeuAcordeao/>
+
 
 
           <Heading color='white'>Aula 1</Heading>
           <Text color='white'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Text>
-
-
-          <Button
-            variant='solid'
-            onPress={handleOpenAula}
-            title="Acessar aula"
-          />
 
           <FlatList
             data={curso.modulos}
@@ -65,7 +61,7 @@ export function Curso() {
                   color='white'
                   p={4} borderColor='white'
                   borderWidth={1} borderRadius={100} marginTop={5}>
-                  {item.nome}
+                  {item.titulo_modulo}
                 </Text>
 
                 <FlatList
@@ -79,7 +75,7 @@ export function Curso() {
                         color='white'
                         py={2} px={4} borderColor='white'
                         borderWidth={1} borderRadius={100} marginTop={5}>
-                        {item.nome}
+                        {item.titulo_aula}
                       </Text>
 
 
