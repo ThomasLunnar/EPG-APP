@@ -28,7 +28,7 @@ export function Curso() {
 
   return (
     <VStack flex={1}>
-      <View h={300} bg='black' pt={12}>
+      <View h='30%' bg='black'>
         <Video
           videoId="1r5KGA9-vBApdTOt_qQWROTkY0VTjI5AG"
         />
