@@ -1,5 +1,5 @@
 import { TouchableOpacity } from 'react-native';
-import { Box, Heading, HStack, Icon, Image, Text, VStack, ScrollView, Checkbox, FlatList, Center, Input } from 'native-base';
+import { Box, Heading, HStack, Icon, Image, Text, VStack, ScrollView, Checkbox, FlatList, Center, Input, View } from 'native-base';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -7,10 +7,9 @@ import { AppNavigatorRoutesProps } from '@routes/app.routes';
 
 import { useCurso } from '@hooks/useCurso'
 
-import SeriesSvg from '@assets/series.svg';
-import RepetitionsSvg from '@assets/repetitions.svg';
 import { Button } from '@components/Button';
 import { HomeHeader } from '@components/HomeHeader';
+import { Video } from "@components/Video";
 
 export function Curso() {
 
@@ -29,14 +28,25 @@ export function Curso() {
 
   return (
     <VStack flex={1}>
-      <HomeHeader />
-
+      <View h={300} bg='black' pt={12}>
+        <Video
+          videoId="1r5KGA9-vBApdTOt_qQWROTkY0VTjI5AG"
+        />
+      </View>
       <ScrollView contentContainerStyle={{ paddingBottom: 36 }}>
+
+
         <VStack mt={6} px={10}>
 
           <Heading color='white' flex={1} textAlign='center' mb={4}>
             {curso.nome}
           </Heading>
+
+
+
+          <Heading color='white'>Aula 1</Heading>
+          <Text color='white'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Text>
+
 
           <Button
             variant='solid'
@@ -80,7 +90,7 @@ export function Curso() {
               </VStack>
             )} />
 
-            
+
 
         </VStack>
       </ScrollView>

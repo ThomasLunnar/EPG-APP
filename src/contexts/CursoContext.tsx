@@ -17,8 +17,8 @@ export const CursoContext = createContext<CursoContextDataProps>({} as CursoCont
 export function CursoContextProvider({ children }: CursoContextProviderProps) {
 
     const [curso, setCurso] = useState({
-        nome: "Curso Exemplo",
-        descricao: "Curso criado para servir de exemplo na modelagem de dados",
+        nome: "html e css",
+        description: "descrição",
         modulos: [
             {
                 ordem: 0,

@@ -17,7 +17,6 @@ export const Video: React.FC<Video> = ({ videoId }) => {
             justifyContent='center'
             alignItems='center'
             bg='black'
-            my={12}
         >
             <WebView
                 source={{ uri: videoUrl }}
