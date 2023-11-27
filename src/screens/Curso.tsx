@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity,Alert } from 'react-native';
+import { TouchableOpacity, Alert } from 'react-native';
 import { Box, Heading, HStack, Icon, Image, Text, VStack, ScrollView, Checkbox, FlatList, Center, Input, View, Container } from 'native-base';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -17,6 +17,7 @@ import ArrowDown from '@assets/arrow-down.svg';
 import { ButtonMenor } from '@components/ButtonMenor';
 import { HomeHeader } from '@components/HomeHeader';
 import { Video } from "@components/Video";
+import { TestButton } from '@components/TestButton';
 
 type RouteParams = {
   modulo: number;
@@ -84,6 +85,18 @@ export function Curso() {
     navigation.goBack();
   }
 
+  const [DescricaoCollapsed, setDescricaoCollapsado] = useState(false)
+
+  const toggleExpandDescricao = () => {
+    setDescricaoCollapsado(!DescricaoCollapsed)
+  }
+
+  const [AnexoCollapsed, setAnexoCollapsado] = useState(true)
+
+  const toggleExpandAnexo = () => {
+    setAnexoCollapsado(!AnexoCollapsed)
+  }
+
   const [moduloCollapsed, setModuloCollapsado] = useState(false)
 
   const toggleExpandModulo = () => {
@@ -118,7 +131,7 @@ export function Curso() {
       </View>
       <ScrollView contentContainerStyle={{ paddingBottom: 36 }}>
 
-        <VStack mt={6} px={10}>
+        <VStack mt={6} px={6}>
           <HStack mb={4}>
             <VStack w='80%' >
               <Heading color='white' textAlign='center' >
@@ -141,8 +154,27 @@ export function Curso() {
             </VStack>
           </HStack>
 
-          <Heading color='white' fontSize='xl'>Aula 1</Heading>
-          <Text color='white'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Text>
+          <TouchableOpacity onPress={toggleExpandDescricao}>
+            <HStack p={4} borderColor='white' borderWidth={1} borderRadius={100} marginTop={5}>
+              <Heading w='90%' color='white' fontSize='lg'>
+                Descrição
+              </Heading>
+              <Container justifyContent='center'>
+                {DescricaoCollapsed ? <ArrowDown /> : <ArrowUp />}
+              </Container>
+            </HStack>
+          </TouchableOpacity>
+
+          <Collapsible collapsed={DescricaoCollapsed} align='bottom'>
+            <VStack p={4}>
+              <Heading color='white' fontSize='xl'>{curso.modulos[numModulo].aulas[numAula].titulo_aula}</Heading>
+              <Text color='white'>{curso.modulos[numModulo].aulas[numAula].descricao}</Text>
+            </VStack>
+          </Collapsible>
+
+          {/* <TestButton onPress={() => {
+            console.log(curso.modulos[numModulo].aulas[numAula].titulo_aula)
+          }} /> */}
 
           <TouchableOpacity onPress={toggleExpandModulo}>
             <HStack p={4} borderColor='white' borderWidth={1} borderRadius={100} marginTop={5}>
@@ -161,10 +193,10 @@ export function Curso() {
               data={curso.modulos}
               keyExtractor={(item, i) => i.toString()}
               renderItem={({ item, index }) => (
-                <VStack>
+                <VStack px={3}>
                   <TouchableOpacity onPress={() => toggleExpandAula(index)}>
 
-                    <HStack p={4} borderColor='white' borderWidth={1} borderRadius={100} marginTop={5}>
+                    <HStack p={3} borderColor='white' borderWidth={1} borderRadius={100} marginTop={5}>
                       <Text w='90%' color='white'>
                         {item.titulo_modulo}
                       </Text>
@@ -184,7 +216,7 @@ export function Curso() {
                         <VStack px={4}>
                           <Text w='full'
                             color='white'
-                            py={2} px={4} borderColor='white'
+                            py={2} px={3} borderColor='white'
                             borderWidth={1} borderRadius={100} marginTop={5}>
                             {item.titulo_aula}
                           </Text>
@@ -196,6 +228,24 @@ export function Curso() {
                 </VStack>
 
               )} />
+          </Collapsible>
+
+          <TouchableOpacity onPress={toggleExpandAnexo}>
+            <HStack p={4} borderColor='white' borderWidth={1} borderRadius={100} marginTop={5}>
+              <Heading w='90%' color='white' fontSize='lg'>
+                Anexos
+              </Heading>
+              <Container justifyContent='center'>
+                {AnexoCollapsed ? <ArrowDown /> : <ArrowUp />}
+              </Container>
+            </HStack>
+          </TouchableOpacity>
+
+          <Collapsible collapsed={AnexoCollapsed} align='bottom'>
+            <VStack p='4'>
+
+              <Text color='white' w='100%' textAlign='center'>Sem anexos por aqui</Text>
+            </VStack>
           </Collapsible>
 
         </VStack>
