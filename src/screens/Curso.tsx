@@ -16,12 +16,20 @@ import { ButtonMenor } from '@components/ButtonMenor';
 import { HomeHeader } from '@components/HomeHeader';
 import { Video } from "@components/Video";
 
+type RouteParams = {
+  modulo: number;
+  aula: number;
+}
+
 export function Curso() {
 
   const route = useRoute();
-
   const { curso } = useCurso()
-  // console.log(curso)
+
+  // pega parâmetros de navegação
+  const numAula = route.params.aula;
+  const numModulo = route.params.modulo;
+
 
   const navigation = useNavigation<AppNavigatorRoutesProps>();
 
@@ -56,31 +64,34 @@ export function Curso() {
     }
   }, []);
 
+  console.log(curso.modulos[numModulo].aulas[numAula].video)
+
   return (
     <VStack flex={1}>
       <View h='30%' bg='black'>
         <Video
-          videoId="1r5KGA9-vBApdTOt_qQWROTkY0VTjI5AG"
+          videoUrl={curso.modulos[numModulo].aulas[numAula].video}
         />
       </View>
       <ScrollView contentContainerStyle={{ paddingBottom: 36 }}>
 
-
         <VStack mt={6} px={10}>
-          <HStack>
-            <VStack w='80%'>
-              <Heading color='white' textAlign='center' mb={4} >
+          <HStack mb={4}>
+            <VStack w='80%' >
+              <Heading color='white' textAlign='center' >
                 {curso.nome}
               </Heading>
-              <Text color='white' textAlign='center'>Aula: {route.params.aula}</Text>
-              <Text color='white' textAlign='center'>Modulo: {route.params.modulo}</Text>
+              <HStack justifyContent='center'>
+                <Text color='white' textAlign='center'>Modulo: {numModulo}</Text>
+                <Text color='white' textAlign='center' ml={2}>Aula: {numAula}</Text>
+              </HStack>
             </VStack>
-            <VStack w='10%' justifyContent='center' alignItems='center'>
+            <VStack w='10%' justifyContent='center' alignItems='flex-end'>
               <TouchableOpacity>
                 <ArrowLeft />
               </TouchableOpacity>
             </VStack>
-            <VStack w='10%' justifyContent='center' alignItems='center'>
+            <VStack w='10%' justifyContent='center' alignItems='flex-end' >
               <TouchableOpacity>
                 <ArrowRight />
               </TouchableOpacity>

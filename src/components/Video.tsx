@@ -4,11 +4,10 @@ import { Container, VStack, View } from 'native-base';
 import { WebView } from 'react-native-webview';
 
 interface Video {
-    videoId: string;
+    videoUrl: string;
 }
 
-export const Video: React.FC<Video> = ({ videoId }) => {
-    const videoUrl = `https://drive.google.com/file/d/${videoId}/preview`;
+export const Video: React.FC<Video> = ({ videoUrl }) => {
 
     return (
         <VStack
