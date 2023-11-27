@@ -97,7 +97,7 @@ export function Curso() {
     setAnexoCollapsado(!AnexoCollapsed)
   }
 
-  const [moduloCollapsed, setModuloCollapsado] = useState(false)
+  const [moduloCollapsed, setModuloCollapsado] = useState(true)
 
   const toggleExpandModulo = () => {
     setModuloCollapsado(!moduloCollapsed)
@@ -171,6 +171,8 @@ export function Curso() {
               <Text color='white'>{curso.modulos[numModulo].aulas[numAula].descricao}</Text>
             </VStack>
           </Collapsible>
+
+          
 
           {/* <TestButton onPress={() => {
             console.log(curso.modulos[numModulo].aulas[numAula].titulo_aula)
