@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity } from 'react-native';
-import { Box, Heading, HStack, Icon, Image, Text, VStack, ScrollView, Checkbox, FlatList, Center, Input, View } from 'native-base';
+import { TouchableOpacity,Alert } from 'react-native';
+import { Box, Heading, HStack, Icon, Image, Text, VStack, ScrollView, Checkbox, FlatList, Center, Input, View, Container } from 'native-base';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
 
@@ -11,6 +11,8 @@ import { useCurso } from '@hooks/useCurso'
 import Collapsible from 'react-native-collapsible';
 import ArrowRight from '@assets/arrow-right.svg';
 import ArrowLeft from '@assets/arrow-left.svg';
+import ArrowUp from '@assets/arrow-up.svg';
+import ArrowDown from '@assets/arrow-down.svg';
 
 import { ButtonMenor } from '@components/ButtonMenor';
 import { HomeHeader } from '@components/HomeHeader';
@@ -30,12 +32,53 @@ export function Curso() {
   const numAula = route.params.aula;
   const numModulo = route.params.modulo;
 
+  function proximaAula({ numAula, numModulo }) {
+    if (curso.modulos[numModulo].aulas[numAula + 1]) {
+      console.log('tem proxima')
+      navigation.navigate('curso', {
+        modulo: numModulo,
+        aula: numAula + 1
+      });
+    } else if (curso.modulos[numModulo + 1]) {
+      navigation.navigate('curso', {
+        modulo: numModulo + 1,
+        aula: 0
+      });
+    } else {
+      console.log('Curso concluído')
+      Alert.alert(
+        'Curso concluído',
+        `Você concluiu todas as aulas do curso ${curso.nome} disponíveis até esse momento.`,
+        [
+          {
+            text: 'OK',
+            onPress: () => console.log('Botão OK Pressionado'),
+          },
+        ],
+        { cancelable: false }
+      );
+    }
+  }
+
+  function aulaAnterior({ numAula, numModulo }) {
+    // console.log(Object.keys(curso.modulos[numModulo - 1].aulas).length)
+    if (curso.modulos[numModulo].aulas[numAula - 1]) {
+      console.log('Não há anterior')
+      navigation.navigate('curso', {
+        modulo: numModulo,
+        aula: numAula - 1
+      });
+    } else if (curso.modulos[numModulo - 1]) {
+      navigation.navigate('curso', {
+        modulo: numModulo - 1,
+        aula: Object.keys(curso.modulos[numModulo - 1].aulas).length - 1
+      });
+    } else {
+      console.log('Algo inesperado aconteceu - CursoNavigation')
+    }
+  }
 
   const navigation = useNavigation<AppNavigatorRoutesProps>();
-
-  function handleOpenAula() {
-    navigation.navigate('aula');
-  }
 
   function handleGoBack() {
     navigation.goBack();
@@ -87,12 +130,12 @@ export function Curso() {
               </HStack>
             </VStack>
             <VStack w='10%' justifyContent='center' alignItems='flex-end'>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => aulaAnterior({ numAula, numModulo })}>
                 <ArrowLeft />
               </TouchableOpacity>
             </VStack>
             <VStack w='10%' justifyContent='center' alignItems='flex-end' >
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => proximaAula({ numAula, numModulo })}>
                 <ArrowRight />
               </TouchableOpacity>
             </VStack>
@@ -102,12 +145,15 @@ export function Curso() {
           <Text color='white'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Text>
 
           <TouchableOpacity onPress={toggleExpandModulo}>
-            <Heading w='full'
-              color='white'
-              p={4} borderColor='white'
-              borderWidth={1} borderRadius={100} marginTop={5} fontSize='lg'>
-              Módulos
-            </Heading>
+            <HStack p={4} borderColor='white' borderWidth={1} borderRadius={100} marginTop={5}>
+              <Heading w='90%' color='white' fontSize='lg'>
+                Módulos
+              </Heading>
+              <Container justifyContent='center'>
+                {moduloCollapsed ? <ArrowDown /> : <ArrowUp />}
+              </Container>
+            </HStack>
+
           </TouchableOpacity>
           <Collapsible collapsed={moduloCollapsed} align='bottom'>
 
@@ -117,12 +163,15 @@ export function Curso() {
               renderItem={({ item, index }) => (
                 <VStack>
                   <TouchableOpacity onPress={() => toggleExpandAula(index)}>
-                    <Text w='full'
-                      color='white'
-                      p={4} borderColor='white'
-                      borderWidth={1} borderRadius={100} marginTop={5}>
-                      {item.titulo_modulo}
-                    </Text>
+
+                    <HStack p={4} borderColor='white' borderWidth={1} borderRadius={100} marginTop={5}>
+                      <Text w='90%' color='white'>
+                        {item.titulo_modulo}
+                      </Text>
+                      <Container justifyContent='center'>
+                        {aulaCollapsed[index] ? <ArrowDown /> : <ArrowUp />}
+                      </Container>
+                    </HStack>
                   </TouchableOpacity>
 
                   <Collapsible collapsed={aulaCollapsed[index]}>
@@ -139,8 +188,6 @@ export function Curso() {
                             borderWidth={1} borderRadius={100} marginTop={5}>
                             {item.titulo_aula}
                           </Text>
-
-
 
                         </VStack>
                       )} />
