@@ -130,7 +130,7 @@ export function CursoRender({ state, trilha }: props) {
                                             modulos: dadosCurso.modulos
                                         }))
 
-                                        navigation.navigate('curso');
+                                        navigation.navigate('curso', {aula:0, modulo:0});
 
                                         // return dadosCurso
                                     } catch (erro) {

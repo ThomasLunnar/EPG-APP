@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Box, Heading, HStack, Icon, Image, Text, VStack, ScrollView, Checkbox, FlatList, Center, Input, View } from 'native-base';
-import { Feather } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { AppNavigatorRoutesProps } from '@routes/app.routes';
 
 import { useCurso } from '@hooks/useCurso'
 
+import Collapsible from 'react-native-collapsible';
+import ArrowRight from '@assets/arrow-right.svg';
+import ArrowLeft from '@assets/arrow-left.svg';
+
+import { ButtonMenor } from '@components/ButtonMenor';
 import { HomeHeader } from '@components/HomeHeader';
 import { Video } from "@components/Video";
 
-import Collapsible from 'react-native-collapsible';
-import { ButtonMenor} from '@components/ButtonMenor';
-
 export function Curso() {
+
+  const route = useRoute();
 
   const { curso } = useCurso()
   // console.log(curso)
@@ -63,18 +67,25 @@ export function Curso() {
 
 
         <VStack mt={6} px={10}>
-
-          <Heading color='white' flex={1} textAlign='center' mb={4} >
-            {curso.nome}
-          </Heading>
-
-          {/* <TouchableOpacity onPress={toggleExpand}>
-            <Text color='white'>Collapse</Text>
-          </TouchableOpacity>
-
-          <Collapsible collapsed={collapsed}>
-            <Text color='white'>Serei collapssado D:(</Text>
-          </Collapsible> */}
+          <HStack>
+            <VStack w='80%'>
+              <Heading color='white' textAlign='center' mb={4} >
+                {curso.nome}
+              </Heading>
+              <Text color='white' textAlign='center'>Aula: {route.params.aula}</Text>
+              <Text color='white' textAlign='center'>Modulo: {route.params.modulo}</Text>
+            </VStack>
+            <VStack w='10%' justifyContent='center' alignItems='center'>
+              <TouchableOpacity>
+                <ArrowLeft />
+              </TouchableOpacity>
+            </VStack>
+            <VStack w='10%' justifyContent='center' alignItems='center'>
+              <TouchableOpacity>
+                <ArrowRight />
+              </TouchableOpacity>
+            </VStack>
+          </HStack>
 
           <Heading color='white' fontSize='xl'>Aula 1</Heading>
           <Text color='white'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Text>
@@ -88,51 +99,46 @@ export function Curso() {
             </Heading>
           </TouchableOpacity>
           <Collapsible collapsed={moduloCollapsed} align='bottom'>
-            
+
             <FlatList
               data={curso.modulos}
               keyExtractor={(item, i) => i.toString()}
               renderItem={({ item, index }) => (
                 <VStack>
-                    <TouchableOpacity onPress={() => toggleExpandAula(index)}>
-                      <Text w='full'
-                        color='white'
-                        p={4} borderColor='white'
-                        borderWidth={1} borderRadius={100} marginTop={5}>
-                        {item.titulo_modulo}
-                      </Text>
-                    </TouchableOpacity>
+                  <TouchableOpacity onPress={() => toggleExpandAula(index)}>
+                    <Text w='full'
+                      color='white'
+                      p={4} borderColor='white'
+                      borderWidth={1} borderRadius={100} marginTop={5}>
+                      {item.titulo_modulo}
+                    </Text>
+                  </TouchableOpacity>
 
-                    <Collapsible collapsed={aulaCollapsed[index]}>
-                      <FlatList
-                        data={item.aulas}
-                        keyExtractor={item => item}
-                        width='full'
-                        flex={1}
-                        renderItem={({ item }) => (
-                          <VStack px={4}>
-                            <Text w='full'
-                              color='white'
-                              py={2} px={4} borderColor='white'
-                              borderWidth={1} borderRadius={100} marginTop={5}>
-                              {item.titulo_aula}
-                            </Text>
+                  <Collapsible collapsed={aulaCollapsed[index]}>
+                    <FlatList
+                      data={item.aulas}
+                      keyExtractor={item => item}
+                      width='full'
+                      flex={1}
+                      renderItem={({ item }) => (
+                        <VStack px={4}>
+                          <Text w='full'
+                            color='white'
+                            py={2} px={4} borderColor='white'
+                            borderWidth={1} borderRadius={100} marginTop={5}>
+                            {item.titulo_aula}
+                          </Text>
 
 
 
-                          </VStack>
+                        </VStack>
                       )} />
-                    </Collapsible>
+                  </Collapsible>
 
-                  </VStack>
-                
+                </VStack>
+
               )} />
-            </Collapsible>
-
-            <HStack gap={2}>
-              <ButtonMenor title='Aula anterior' />
-              <ButtonMenor title='Próxima aula >' />
-            </HStack>
+          </Collapsible>
 
         </VStack>
       </ScrollView>
