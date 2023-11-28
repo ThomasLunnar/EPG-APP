@@ -16,7 +16,8 @@ export default function () {
 
   GoogleSignin.configure({
     scopes: ['https://www.googleapis.com/auth/drive.readonly'],
-    webClientId: WEB_CLIENT_ID,
+    // webClientId: WEB_CLIENT_ID,
+    webClientId: '476099768900-3jgrsnrcalu3b64ikkvc6araopq617kf.apps.googleusercontent.com',
     
   });
 

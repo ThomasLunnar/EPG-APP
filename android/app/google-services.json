@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "476099768900",
+    "project_id": "epg-app-7cfa9",
+    "storage_bucket": "epg-app-7cfa9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476099768900:android:8cb141b35a4485d2124211",
+        "android_client_info": {
+          "package_name": "com.thomasLunnar.EPG"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476099768900-5fi23kl4g60bkqflj0nk49ibn893062e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thomasLunnar.EPG",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "476099768900-3jgrsnrcalu3b64ikkvc6araopq617kf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeE7Fc1dWoV0njoLxHcOy9-l2yGd0Ed58"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476099768900-3jgrsnrcalu3b64ikkvc6araopq617kf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
