@@ -19,10 +19,10 @@ export function Account() {
 
   const { setUser } = useAuth();
 
-  function logOut(){
+  async function logOut() {
     setUser({
-      nome:"",
-      email:"",
+      nome: "",
+      email: "",
       validado: false
     })
   }
@@ -35,54 +35,54 @@ export function Account() {
         <Center mt={6} px={10}>
           {
             photoIsLoading ?
-              <Skeleton 
+              <Skeleton
                 w={PHOTO_SIZE}
                 h={PHOTO_SIZE}
                 rounded="full"
                 startColor="gray.500"
                 endColor="gray.400"
               />
-            :
-              <UserPhoto 
+              :
+              <UserPhoto
                 source={userPhotoDefault}
                 alt="Foto do usuário"
                 size={PHOTO_SIZE}
               />
           }
-          
+
           <TouchableOpacity>
             <Text color="blue.500" fontWeight="bold" fontSize="md" mt={2} mb={8}>
               Alterar Foto
             </Text>
           </TouchableOpacity>
 
-          <Input 
+          <Input
             placeholder='Nome'
             isDisabled
           />
 
-          <Input 
+          <Input
             placeholder="E-mail"
             isDisabled
           />
-        
+
           <Heading color="white" fontSize="md" mb={2} alignSelf="flex-start" mt={12}>
             Alterar senha
           </Heading>
 
-          <Input 
+          <Input
             placeholder="Senha antiga"
             secureTextEntry
             isDisabled
           />
 
-          <Input 
+          <Input
             placeholder="Nova senha"
             secureTextEntry
             isDisabled
           />
 
-          <Input 
+          <Input
             placeholder="Confirme a nova senha"
             secureTextEntry
             isDisabled
