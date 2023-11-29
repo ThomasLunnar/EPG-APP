@@ -4,6 +4,7 @@ export declare global {
             curso: {
                 aula: string;
                 modulo: string;
+                id?: string;
             }
         }
     }

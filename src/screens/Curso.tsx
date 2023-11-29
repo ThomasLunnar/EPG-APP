@@ -9,6 +9,8 @@ import { AppNavigatorRoutesProps } from '@routes/app.routes';
 import { useCurso } from '@hooks/useCurso'
 
 import Collapsible from 'react-native-collapsible';
+import Accordion from 'react-native-collapsible/Accordion';
+
 import ArrowRight from '@assets/arrow-right.svg';
 import ArrowLeft from '@assets/arrow-left.svg';
 import ArrowUp from '@assets/arrow-up.svg';
@@ -133,11 +135,11 @@ export function Curso() {
 
         <VStack mt={6} px={6}>
           <HStack mb={4}>
-            <VStack w='80%' >
-              <Heading color='white' textAlign='center' >
+            <VStack w='80%' px={4}>
+              <Heading color='white'  >
                 {curso.nome}
               </Heading>
-              <HStack justifyContent='center'>
+              <HStack >
                 <Text color='white' textAlign='center'>Modulo: {numModulo}</Text>
                 <Text color='white' textAlign='center' ml={2}>Aula: {numAula}</Text>
               </HStack>
@@ -172,7 +174,7 @@ export function Curso() {
             </VStack>
           </Collapsible>
 
-          
+
 
           {/* <TestButton onPress={() => {
             console.log(curso.modulos[numModulo].aulas[numAula].titulo_aula)
@@ -193,14 +195,14 @@ export function Curso() {
 
             <FlatList
               data={curso.modulos}
-              keyExtractor={(item, i) => i.toString()}
+              keyExtractor={item => item.id}
               renderItem={({ item, index }) => (
                 <VStack px={3}>
                   <TouchableOpacity onPress={() => toggleExpandAula(index)}>
 
                     <HStack p={3} borderColor='white' borderWidth={1} borderRadius={100} marginTop={5}>
                       <Text w='90%' color='white'>
-                        {item.titulo_modulo}
+                        {item.titulo_modulo} {index}
                       </Text>
                       <Container justifyContent='center'>
                         {aulaCollapsed[index] ? <ArrowDown /> : <ArrowUp />}
@@ -211,7 +213,7 @@ export function Curso() {
                   <Collapsible collapsed={aulaCollapsed[index]}>
                     <FlatList
                       data={item.aulas}
-                      keyExtractor={item => item}
+                      keyExtractor={item => item.id}
                       width='full'
                       flex={1}
                       renderItem={({ item }) => (
@@ -222,7 +224,9 @@ export function Curso() {
                             borderWidth={1} borderRadius={100} marginTop={5}>
                             {item.titulo_aula}
                           </Text>
-
+                          {/* <TestButton onPress={(item.moduloRef) => {
+                            
+                          }} /> */}
                         </VStack>
                       )} />
                   </Collapsible>

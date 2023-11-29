@@ -32,45 +32,6 @@ type props = {
     trilha: ['Estratégica', 'Profissional']
 }
 
-async function handleOpenTreinamentoDetails({ CursoId }) {
-
-    // const navigation = useNavigation<AppNavigatorRoutesProps>();
-    // console.log(CursoId)
-    // await SelelecionaCurso({ CursoId })
-
-    // try {
-    // } catch (erro) {
-    //     console.error('Erro na seleção de curso', erro);
-    // }
-
-    //====================Abaixo código do SelecioCurso.ts=============================
-
-    // const navigation = useNavigation<AppNavigatorRoutesProps>();
-
-    // const { setCurso } = useCurso();
-    // console.log('inicio SelecionaCurso')
-    // try {
-    //     const getCurso = await handleGetCursosId({CursoId})
-    //     let dadosCurso = getCurso.data
-    //     console.log(dadosCurso)
-    //     console.log('dadosCurso')
-
-    //     //Salvar resposta do Get Curso em uma variavel
-
-    //     setCurso((prevState) => ({
-    //         ...prevState,
-    //         nome: dadosCurso.nome,
-    //         descricao: "Curso criado para servir de exemplo na modelagem de dados",
-    //     }))
-
-    //     navigation.navigate('curso');
-
-    //     // return dadosCurso
-    // } catch (erro) {
-    //     console.error('Erro ao buscar cursos:', erro);
-    // }
-}
-
 export function CursoRender({ state, trilha }: props) {
 
     const { setCurso } = useCurso();
@@ -106,12 +67,12 @@ export function CursoRender({ state, trilha }: props) {
                     <FlatList
                         data={cursosFiltrados}
                         background='blue.700'
-                        keyExtractor={item => item}
+                        keyExtractor={item => item.id}
                         renderItem={({ item }) => (
                             // <TreinamentoCard onPress={() => handleOpenTreinamentoDetails({ CursoId: item.id })} nome={item.nome} />
                             <TreinamentoCard
                                 nome={item.nome}
-                                key={item.id}
+                                key={item}
                                 capa={item.capa}
                                 onPress={async () => {
                                     console.log('inicio SelecionaCurso')
