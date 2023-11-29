@@ -7,17 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:476099768900:android:8cb141b35a4485d2124211",
+        "mobilesdk_app_id": "1:476099768900:android:0633765de56d6051124211",
         "android_client_info": {
-          "package_name": "com.thomasLunnar.EPG"
+          "package_name": "com.thomaslunnar.EPG"
         }
       },
       "oauth_client": [
         {
-          "client_id": "476099768900-5fi23kl4g60bkqflj0nk49ibn893062e.apps.googleusercontent.com",
+          "client_id": "476099768900-vbatj8s6sr7ei78sqengi3aut485b1qm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.thomasLunnar.EPG",
+            "package_name": "com.thomaslunnar.EPG",
             "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
           }
         },

@@ -44,7 +44,9 @@ export function GuestSignIn() {
       console.log(true)
       setUser((prevState) => ({
         ...prevState,
-        validado:true
+        validado:true,
+        email: 'convidado@lunnar.team',
+        nome: 'Convidado'
       }))
     } else {
       console.log(false)

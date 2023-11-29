@@ -15,8 +15,8 @@ export default function () {
   const { setUser } = useAuth();
 
   GoogleSignin.configure({
-    scopes: ['https://www.googleapis.com/auth/drive.readonly'],
-    // webClientId: WEB_CLIENT_ID,
+    // scopes: ['https://www.googleapis.com/auth/drive.readonly'],
+    // // webClientId: WEB_CLIENT_ID,
     webClientId: '476099768900-3jgrsnrcalu3b64ikkvc6araopq617kf.apps.googleusercontent.com',
     
   });
@@ -121,7 +121,7 @@ export default function () {
           [
             {
               text: 'OK',
-              onPress: () => console.log('Botão OK Pressionado'),
+              onPress: () => console.error(error),
             },
           ],
           { cancelable: false }
