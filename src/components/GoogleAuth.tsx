@@ -46,8 +46,8 @@ export default function () {
       // #3 Consulta na API do banco multi-Tenant
 
       let serverResposta = await handleTenantKey({
-        email: userInfo.user.email,
-        retornarDados: true,
+        // email: userInfo.user.email,
+        // retornarDados: true,
       })
       console.log(serverResposta.tenantValido)
       console.log('serverResposta')

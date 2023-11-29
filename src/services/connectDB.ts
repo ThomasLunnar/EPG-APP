@@ -1,12 +1,13 @@
 import api from "@services/api"
 
 export async function handleTenantKey({ email, retornarDados }) {
-  let teste = await api.post("/api/conectarDb", {
-    email,
-    retornarDados
-  })
+  // let teste = await api.post("/api/conectarDb", {
+  //   email,
+  //   retornarDados
+  // })
   // console.log(teste.data)
-  return teste.data
+  // return teste.data
+  return { tenantValido: true, dadosUsuario: { email: email } }
 }
 
 export async function handleGetCursos() {
@@ -15,16 +16,16 @@ export async function handleGetCursos() {
   return TodosCursos.data
 }
 
-export async function handleGetCursosId({CursoId}) {
+export async function handleGetCursosId({ CursoId }) {
   let cursoUrl = `/api/curso/list/id/${CursoId}`
-  try{
+  try {
     console.log(cursoUrl)
     console.log('cursoUrl')
     let Cursofiltrado = await api.get(cursoUrl)
     console.log(Cursofiltrado.data)
     console.log('Cursofiltrado.data')
     return Cursofiltrado.data
-  } catch(erro){
+  } catch (erro) {
     console.error('ruim no axios')
   }
 }
@@ -36,16 +37,16 @@ export async function handleGetCursosId({CursoId}) {
 //   return Cursofiltrado.data
 // }
 
-export async function handleGetCursoCompleto({CursoSlug}) {
+export async function handleGetCursoCompleto({ CursoSlug }) {
   let cursoUrl = `/api/relations/list/${CursoSlug}`
-  try{
+  try {
     console.log(cursoUrl)
     console.log('cursoUrl')
     let Cursofiltrado = await api.get(cursoUrl)
     console.log(Cursofiltrado.data)
     console.log('Cursofiltrado.data')
     return Cursofiltrado.data
-  } catch(erro){
+  } catch (erro) {
     console.error('ruim no axios')
   }
 }
