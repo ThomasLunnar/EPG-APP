@@ -10,6 +10,7 @@ export const THEME = extendTheme({
     blue: {
       800: '#181E33',
       700: '#161C2F',
+      600: '#006C85',
       500: '#008AA8',
     },
     gray: {
@@ -27,7 +28,7 @@ export const THEME = extendTheme({
     }
   },
   fonts: {
-    heading: 'Montserrat_700Bold',
+    heading: 'Montserrat_600SemiBold',
     body: 'Montserrat_400Regular',
   },
   fontSizes: {

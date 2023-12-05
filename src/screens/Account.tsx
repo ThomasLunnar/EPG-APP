@@ -7,12 +7,25 @@ import { UserPhoto } from '@components/UserPhoto';
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
 
+import userPhotoDefault from '@assets/userPhotoDefault.png'
+
+import { useAuth } from '@hooks/useAuth'
 
 const PHOTO_SIZE = 33;
 
 export function Account() {
 
   const [photoIsLoading, setPhotoIsLoading] = useState(false);
+
+  const { setUser } = useAuth();
+
+  async function logOut() {
+    setUser({
+      nome: "",
+      email: "",
+      validado: false
+    })
+  }
 
   return (
     <VStack flex={1}>
@@ -22,61 +35,67 @@ export function Account() {
         <Center mt={6} px={10}>
           {
             photoIsLoading ?
-              <Skeleton 
+              <Skeleton
                 w={PHOTO_SIZE}
                 h={PHOTO_SIZE}
                 rounded="full"
                 startColor="gray.500"
                 endColor="gray.400"
               />
-            :
-              <UserPhoto 
-                source={{ uri: 'https://github.com/thomaslunnar.png' }}
+              :
+              <UserPhoto
+                source={userPhotoDefault}
                 alt="Foto do usuário"
                 size={PHOTO_SIZE}
               />
           }
-          
+
           <TouchableOpacity>
             <Text color="blue.500" fontWeight="bold" fontSize="md" mt={2} mb={8}>
               Alterar Foto
             </Text>
           </TouchableOpacity>
 
-          <Input 
-            bg="blue.800" 
-            placeholder='Nome' 
+          <Input
+            placeholder='Nome'
+            isDisabled
           />
 
-          <Input 
-            bg="blue.800" 
+          <Input
             placeholder="E-mail"
             isDisabled
           />
-        
+
           <Heading color="white" fontSize="md" mb={2} alignSelf="flex-start" mt={12}>
             Alterar senha
           </Heading>
 
-          <Input 
-            bg="blue.800"
+          <Input
             placeholder="Senha antiga"
             secureTextEntry
+            isDisabled
           />
 
-          <Input 
-            bg="blue.800"
+          <Input
             placeholder="Nova senha"
             secureTextEntry
+            isDisabled
           />
 
-          <Input 
-            bg="blue.800"
+          <Input
             placeholder="Confirme a nova senha"
             secureTextEntry
+            isDisabled
           />
 
           <Button title="Atualizar" mt={4} />
+
+          <TouchableOpacity onPress={logOut}>
+            <Text color="red.500" fontWeight="medium" fontSize="md" mt={16} mb={2}>
+              Sair
+            </Text>
+          </TouchableOpacity>
+
         </Center>
       </ScrollView>
     </VStack>

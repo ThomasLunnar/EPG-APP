@@ -29,9 +29,7 @@ export function SignUp() {
         <Center my={24}>
           <LogoSvg />
 
-          <Text color="white" fontSize="sm">
-            Treine sua mente e o seu corpo.
-          </Text>
+          
         </Center>
 
         <Center>

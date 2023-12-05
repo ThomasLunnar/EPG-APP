@@ -5,19 +5,24 @@ import { createBottomTabNavigator, BottomTabNavigationProp } from '@react-naviga
 import HomeSvg from '@assets/home.svg';
 import HistorySvg from '@assets/history.svg';
 import AccountSvg from '@assets/account.svg';
+import CadernoSvg from '@assets/caderno.svg'
 
 import { Home } from '@screens/Home';
-import { Treinamento } from '@screens/Treinamento';
+import { Curso } from '@screens/Curso';
 import { History } from '@screens/History';
 import { Account } from '@screens/Account';
 import { Perfil } from '@screens/Perfil';
+import { MeuCaderno } from '@screens/MeuCaderno';
+import { Aula } from '@screens/Aula';
 
 type AppRoutes = {
   home: undefined;
-  treinamento: undefined;
+  curso: undefined;
   account: undefined;
   history: undefined;
   perfil: undefined;
+  meuCaderno: undefined;
+  aula: undefined;
 }
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>;
@@ -31,7 +36,7 @@ export function AppRoutes() {
   const iconSize = sizes[6];
 
   return (
-    <Navigator screenOptions={{ 
+    <Navigator screenOptions={{
       headerShown: false,
       tabBarShowLabel: true,
       tabBarActiveTintColor: colors.blue[500],
@@ -44,11 +49,11 @@ export function AppRoutes() {
         paddingTop: sizes[8]
       }
     }}>
-      <Screen 
+      <Screen
         name='home'
         component={Home}
         options={{
-          tabBarIcon: ({ color,  }) => (
+          tabBarIcon: ({ color, }) => (
             <HomeSvg fill={color} width={iconSize} height={iconSize} />
           )
         }}
@@ -66,7 +71,7 @@ export function AppRoutes() {
         }}
       /> */}
 
-      <Screen 
+      <Screen
         name='account'
         component={Account}
         options={{
@@ -76,13 +81,29 @@ export function AppRoutes() {
         }}
       />
 
-      <Screen 
-        name='treinamento'
-        component={Treinamento}
+      <Screen
+        name='meuCaderno'
+        component={MeuCaderno}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <CadernoSvg fill={color} width={iconSize} height={iconSize} />
+          )
+        }}
+      />
+
+      <Screen
+        name='curso'
+        component={Curso}
         options={{ tabBarButton: () => null }}
       />
 
-      <Screen 
+      <Screen
+        name='aula'
+        component={Aula}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
         name="perfil"
         component={Perfil}
         options={{ tabBarButton: () => null }}

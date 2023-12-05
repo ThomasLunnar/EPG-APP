@@ -2,6 +2,7 @@
   "expo": {
     "name": "EPG",
     "slug": "EPG",
+    "scheme":"epg",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,10 +19,12 @@
       "**/*"
     ],
     "ios": {
+      "googleServicesFile": "./GoogleService-Info.plist",
       "supportsTablet": true,
       "bundleIdentifier": "com.thomaslunnar.EPG"
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#161C2F"
@@ -35,6 +38,7 @@
       "eas": {
         "projectId": "49aa1bd4-3635-4655-91a5-76aebca8dcf8"
       }
-    }
+    },
+    "plugins": ["@react-native-google-signin/google-signin"]
   }
 }
