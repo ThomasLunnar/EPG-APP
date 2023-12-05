@@ -7,7 +7,7 @@ on:
 
 jobs:
   CI:
-    name: Continuous Integration
+    name: Integração continua
     runs-on: ubuntu-latest
 
     steps:
