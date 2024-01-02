@@ -99,7 +99,7 @@ export function Curso() {
     setAnexoCollapsado(!AnexoCollapsed)
   }
 
-  const [moduloCollapsed, setModuloCollapsado] = useState(true)
+  const [moduloCollapsed, setModuloCollapsado] = useState(false)
 
   const toggleExpandModulo = () => {
     setModuloCollapsado(!moduloCollapsed)
@@ -116,13 +116,13 @@ export function Curso() {
   //UseEffect para transformar Collapsed de aulas de forma dinamica 
   useEffect(() => {
     if (curso.modulos && curso.modulos.length > 0) {
-      const novoArrayDeBooleanos = Array(curso.modulos.length).fill(false);
+      const novoArrayDeBooleanos = Array(curso.modulos.length).fill(true);
       setAulaCollapsado(novoArrayDeBooleanos);
       console.log(novoArrayDeBooleanos)
     }
   }, []);
 
-  console.log(curso.modulos[numModulo].aulas[numAula].video)
+  // console.log(curso.modulos[numModulo].aulas[numAula].video)
 
   return (
     <VStack flex={1}>
@@ -196,13 +196,15 @@ export function Curso() {
             <FlatList
               data={curso.modulos}
               keyExtractor={item => item.id}
+              height='fit-content'
+              overflow='visible'
               renderItem={({ item, index }) => (
                 <VStack px={3}>
                   <TouchableOpacity onPress={() => toggleExpandAula(index)}>
 
                     <HStack p={3} borderColor='white' borderWidth={1} borderRadius={100} marginTop={5}>
                       <Text w='90%' color='white'>
-                        {item.titulo_modulo} {index}
+                        {item.titulo_modulo}
                       </Text>
                       <Container justifyContent='center'>
                         {aulaCollapsed[index] ? <ArrowDown /> : <ArrowUp />}
@@ -211,9 +213,11 @@ export function Curso() {
                   </TouchableOpacity>
 
                   <Collapsible collapsed={aulaCollapsed[index]}>
+
                     <FlatList
                       data={item.aulas}
                       keyExtractor={item => item.id}
+                      height='100%'
                       width='full'
                       flex={1}
                       renderItem={({ item }) => (
@@ -233,7 +237,10 @@ export function Curso() {
 
                 </VStack>
 
-              )} />
+              )}
+            />
+
+
           </Collapsible>
 
           <TouchableOpacity onPress={toggleExpandAnexo}>

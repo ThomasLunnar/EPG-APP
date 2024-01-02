@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { FlatList, Text, Button, VStack, HStack, Heading } from "native-base";
+import { FlatList, Text, Button, VStack, HStack, Heading, Skeleton } from "native-base";
+
 
 //API
 import { handleGetCursos } from '@services/connectDB';
@@ -42,7 +43,6 @@ export function CursoRender({ state, trilha }: props) {
 
     return (
         <VStack>
-
 
                 <VStack px={8}>
                     <HStack justifyContent="space-between" my={5}>

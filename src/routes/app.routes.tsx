@@ -38,7 +38,7 @@ export function AppRoutes() {
   return (
     <Navigator screenOptions={{
       headerShown: false,
-      tabBarShowLabel: true,
+      tabBarShowLabel: false,
       tabBarActiveTintColor: colors.blue[500],
       tabBarInactiveTintColor: colors.gray[200],
       tabBarStyle: {
@@ -74,21 +74,23 @@ export function AppRoutes() {
       <Screen
         name='account'
         component={Account}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <AccountSvg fill={color} width={iconSize} height={iconSize} />
-          )
-        }}
+        // options={{
+        //   tabBarIcon: ({ color }) => (
+        //     <AccountSvg fill={color} width={iconSize} height={iconSize} />
+        //   )
+        // }}
+        options={{ tabBarButton: () => null }}
       />
 
       <Screen
         name='meuCaderno'
         component={MeuCaderno}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <CadernoSvg fill={color} width={iconSize} height={iconSize} />
-          )
-        }}
+        // options={{
+        //   tabBarIcon: ({ color }) => (
+        //     <CadernoSvg fill={color} width={iconSize} height={iconSize} />
+        //   )
+        // }}
+        options={{ tabBarButton: () => null }}
       />
 
       <Screen

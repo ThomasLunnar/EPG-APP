@@ -18,7 +18,7 @@ type FormDataProps = {
 }
 
 const GuestSignInSchema = yup.object({
-  GuestPassword: yup.string().required('Informe a senha agora').oneOf(['lunnar23'],'senha incorreta')
+  GuestPassword: yup.string().required('Informe a senha agora').oneOf(['lunnar24'],'senha incorreta')
   
 })
 
@@ -40,7 +40,7 @@ export function GuestSignIn() {
 
   function handleGuestSignIn(guestPassword: any) {
     console.log(guestPassword)
-    if (guestPassword.GuestPassword == "lunnar23") {
+    if (guestPassword.GuestPassword == "lunnar24") {
       console.log(true)
       setUser((prevState) => ({
         ...prevState,

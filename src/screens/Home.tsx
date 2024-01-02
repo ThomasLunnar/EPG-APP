@@ -66,7 +66,7 @@ export function Home() {
       <VStack flex={1} mb={10}>
         <HomeHeader />
 
-        <FlatList
+        {/* <FlatList
           data={Perfis}
           background='blue.700'
           keyExtractor={item => item}
@@ -88,12 +88,13 @@ export function Home() {
           _contentContainerStyle={{
             paddingRight: 8
           }}
-        />
+        /> */}
+
         {cursos.length > 0 &&
           <CursoRender state={cursos} trilha="Estratégica" />
         }
 
-        <VStack px={8}>
+        {/* <VStack px={8}>
           <HStack justifyContent="space-between" my={5}>
             <HStack>
               <Text color='white' fontSize="xl">
@@ -107,9 +108,9 @@ export function Home() {
               {Perfis.length}
             </Text>
           </HStack>
-        </VStack>
+        </VStack> */}
 
-        <FlatList
+        {/* <FlatList
           data={Perfis}
           background='blue.700'
           keyExtractor={item => item}
@@ -130,10 +131,10 @@ export function Home() {
           _contentContainerStyle={{
             paddingRight: 8
           }}
-        />
+        /> */}
 
         {cursos.length > 0 &&
-          <CursoRender state={cursos} trilha='Profissional' />
+          <CursoRender state={cursos} trilha="Profissional" />
         }
 
 

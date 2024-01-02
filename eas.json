@@ -1,6 +1,7 @@
 {
   "cli": {
-    "version": ">= 5.4.0"
+    "version": ">= 5.4.0",
+    "appVersionSource": "remote"
   },
   "build": {
     "preview": {
@@ -18,6 +19,7 @@
       }
     },
     "production": {
+      "autoIncrement": true,
       "env": {
         "ANDROID_CLIENT_ID": "489982154780-33lsobrc2cdrc7d3tnm7veokfne982lm.apps.googleusercontent.com",
         "IOS_CLIENT_ID": "489982154780-26eplfit5a8rvkdmcgk64d1javrajp83.apps.googleusercontent.com",
