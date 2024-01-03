@@ -39,37 +39,25 @@ export function Curso() {
   const numModulo = route.params.modulo;
 
   const aulaSelecionada = curso.modulos[numModulo].aulas[numAula]
-  console.log(aulaSelecionada)
-  console.log('aula selecionada')
+  // console.log(aulaSelecionada)
+  // console.log('aula selecionada')
 
-  try {
-    
-    curso.modulos.some(modulo => {
+  useEffect(() => {
+    try {
+
+      curso.modulos.some(modulo => {
         // Filtrando as aulas dentro do módulo
         const aulasFiltradas = modulo.aulas.filter(aula => aula.refFauna === aulaSelecionada.refFauna);
         console.log(aulasFiltradas[0])
         console.log('aulasFiltradas')
+      })
 
-        if (aulasFiltradas.length > 0) {
-            setAulaData(aulasFiltradas[0]);
-            return true; // Para interromper a iteração
-        }
+    } catch (erro) {
+      console.error('Aula não encontrada ' + erro)
 
-        return false
-    })
+    }
+  }, []);
 
-
-    // const aulaFiltrada = formData.modulos.filter(modulo =>
-    //     modulo.aulas.some(aula => aula.refFauna === aulaId)
-    // );
-
-    // console.log(aulaFiltrada)
-    // console.log('########## aulaFiltrada')
-
-} catch (erro) {
-    console.error('Aula não encontrada ' + erro)
-
-}
 
   function proximaAula({ numAula, numModulo }) {
     if (curso.modulos[numModulo].aulas[numAula + 1]) {
@@ -236,7 +224,7 @@ export function Curso() {
               overflow='visible'
               renderItem={({ item, index }) => (
                 <VStack px={3}>
-                  
+
                   <TouchableOpacity onPress={() => toggleExpandAula(index)}>
 
                     <HStack p={3} borderColor='white' borderWidth={1} borderRadius={100} marginTop={5}>
@@ -251,7 +239,37 @@ export function Curso() {
 
                   <Collapsible collapsed={aulaCollapsed[index]}>
 
-                    <FlatList
+                    {item.aulas.map((aula, i) => (
+                      <VStack key={aula.refFauna} px={4}>
+                        <HStack w='full'
+
+                          py={2} px={3}
+                          borderColor={aula.refFauna == aulaSelecionada.refFauna ? 'blue.500' : 'white'}
+                          borderWidth={1} borderRadius={100} marginTop={5}
+
+                        >
+                          <TouchableOpacity
+                            onPress={() => (navigation.navigate('curso', {
+                              modulo: index,
+                              aula: i
+                            }))}
+                          >
+                            <Text
+                              color={aula.refFauna == aulaSelecionada.refFauna ? 'blue.500' : 'white'}
+                              
+                            >
+                              {aula.titulo_aula}{index}{i}
+                            </Text>
+                          </TouchableOpacity>
+                        </HStack >
+
+                        {/* <TestButton onPress={(item.moduloRef) => {
+                      
+                    }} /> */}
+                      </VStack>
+                    ))}
+
+                    {/* <FlatList
                       data={item.aulas}
                       keyExtractor={item => item.id}
                       height='100%'
@@ -265,11 +283,9 @@ export function Curso() {
                             borderWidth={1} borderRadius={100} marginTop={5}>
                             {item.titulo_aula}
                           </Text>
-                          {/* <TestButton onPress={(item.moduloRef) => {
-                            
-                          }} /> */}
+
                         </VStack>
-                      )} />
+                      )} /> */}
                   </Collapsible>
 
                 </VStack>
