@@ -31,9 +31,45 @@ export function Curso() {
   const route = useRoute();
   const { curso } = useCurso()
 
+  // console.log(curso.modulos)
+  // console.log('da pagina curso')
+
   // pega parâmetros de navegação
   const numAula = route.params.aula;
   const numModulo = route.params.modulo;
+
+  const aulaSelecionada = curso.modulos[numModulo].aulas[numAula]
+  console.log(aulaSelecionada)
+  console.log('aula selecionada')
+
+  try {
+    
+    curso.modulos.some(modulo => {
+        // Filtrando as aulas dentro do módulo
+        const aulasFiltradas = modulo.aulas.filter(aula => aula.refFauna === aulaSelecionada.refFauna);
+        console.log(aulasFiltradas[0])
+        console.log('aulasFiltradas')
+
+        if (aulasFiltradas.length > 0) {
+            setAulaData(aulasFiltradas[0]);
+            return true; // Para interromper a iteração
+        }
+
+        return false
+    })
+
+
+    // const aulaFiltrada = formData.modulos.filter(modulo =>
+    //     modulo.aulas.some(aula => aula.refFauna === aulaId)
+    // );
+
+    // console.log(aulaFiltrada)
+    // console.log('########## aulaFiltrada')
+
+} catch (erro) {
+    console.error('Aula não encontrada ' + erro)
+
+}
 
   function proximaAula({ numAula, numModulo }) {
     if (curso.modulos[numModulo].aulas[numAula + 1]) {
@@ -200,6 +236,7 @@ export function Curso() {
               overflow='visible'
               renderItem={({ item, index }) => (
                 <VStack px={3}>
+                  
                   <TouchableOpacity onPress={() => toggleExpandAula(index)}>
 
                     <HStack p={3} borderColor='white' borderWidth={1} borderRadius={100} marginTop={5}>

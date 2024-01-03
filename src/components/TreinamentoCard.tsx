@@ -29,7 +29,7 @@ export function TreinamentoCard({ nome, capa, ...rest }: Props) {
             w={48}
             h={72}
             onError={handleImageError}
-            accessibilityLabel={nome}
+            accessibilityLabel="Descrição da imagem para acessibilidade"
 
             rounded="md"
             mr={6}
