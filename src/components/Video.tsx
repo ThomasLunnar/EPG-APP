@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
-import { Container, VStack, View } from 'native-base';
+import { Container, Text, VStack, View } from 'native-base';
 import { WebView } from 'react-native-webview';
+
+import { TestButton } from '@components/TestButton';
 
 interface Video {
     videoUrl: string;
 }
 
 export const Video: React.FC<Video> = ({ videoUrl }) => {
+
+    const [videoLoading, setVideoLoading] = useState(true);
+    const [videoSrc, setVideoSrc] = useState('');
 
     return (
         <VStack
@@ -27,7 +32,12 @@ export const Video: React.FC<Video> = ({ videoUrl }) => {
                 borderWidth={120}
                 paddingRight={100}
                 paddingLeft={100}
+                onLoad={() => (setVideoLoading(false))}
             />
+            <Text color='white'>{videoLoading ? 'não foi':'foi'}</Text>
+            <TestButton onPress={() => {
+            console.log(videoLoading)
+          }} />
         </VStack>
     );
 };

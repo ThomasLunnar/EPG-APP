@@ -28,6 +28,8 @@ type RouteParams = {
 
 export function Curso() {
 
+  
+
   const route = useRoute();
   const { curso } = useCurso()
 
@@ -39,6 +41,7 @@ export function Curso() {
   const numModulo = route.params.modulo;
 
   const aulaSelecionada = curso.modulos[numModulo].aulas[numAula]
+
   // console.log(aulaSelecionada)
   // console.log('aula selecionada')
 
@@ -151,9 +154,11 @@ export function Curso() {
   return (
     <VStack flex={1}>
       <View h='30%' bg='black'>
+
         <Video
-          videoUrl={curso.modulos[numModulo].aulas[numAula].video}
+          videoUrl={aulaSelecionada.video}
         />
+
       </View>
       <ScrollView contentContainerStyle={{ paddingBottom: 36 }}>
 
@@ -256,9 +261,9 @@ export function Curso() {
                           >
                             <Text
                               color={aula.refFauna == aulaSelecionada.refFauna ? 'blue.500' : 'white'}
-                              
+
                             >
-                              {aula.titulo_aula}{index}{i}
+                              {aula.titulo_aula}
                             </Text>
                           </TouchableOpacity>
                         </HStack >
