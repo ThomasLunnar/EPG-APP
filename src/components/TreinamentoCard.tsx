@@ -16,25 +16,35 @@ export function TreinamentoCard({ nome, capa, ...rest }: Props) {
 
   const [imageError, setImageError] = useState(false);
 
-  const handleImageError = () => {
-    setImageError(true);
-  };
-
   return (
     <TouchableOpacity {...rest}>
       <VStack alignItems="center" rounded="md">
-          <Image
-            source={ imageError ? cardPlaceholder : { uri: capa } }
-            alt='Capa do curso'
-            w={48}
-            h={72}
-            onError={handleImageError}
-            accessibilityLabel="Descrição da imagem para acessibilidade"
+      {
+        imageError ? 
+        <Image
+          source={cardPlaceholder }
+          alt='Capa do curso'
+          w={48}
+          h={72}
+          onError={()=> {setImageError(true)} }
+          accessibilityLabel="Descrição da imagem para acessibilidade"
 
-            rounded="md"
-            mr={6}
-            resizeMode="cover"
-          />
+          rounded="md"
+          mr={6}
+          resizeMode="cover"
+        /> :   <Image
+        source={{ uri: capa } }
+        alt='Capa do curso'
+        w={48}
+        h={72}
+        onError={()=> {setImageError(true)} }
+        accessibilityLabel="Descrição da imagem para acessibilidade"
+
+        rounded="md"
+        mr={6}
+        resizeMode="cover"
+      />
+      }
 
         <Text color='white'>{nome}</Text>
       </VStack>
